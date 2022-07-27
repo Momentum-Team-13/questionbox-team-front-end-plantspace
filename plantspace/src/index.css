@@ -1,0 +1,107 @@
+h1 {
+  font-size: 100px;
+}
+
+h2 {
+  font-size: 40px;  
+}
+
+h3 {
+  font-size: 60px;
+  line-height: .4;
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+}
+
+.header-bg {
+  background-image: url("/src/Pothos-Leaves-Curling.jpeg");
+}
+
+.header {
+  text-align: center;
+  line-height: .7;
+  font-family: 'Oswald', sans-serif;
+  
+}
+
+.header-elements {
+  background-color: rgb(132, 132, 132); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.279); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #ffffff;
+  z-index: 2;
+  padding: 20px;
+  text-align: center;
+  backdrop-filter: blur(5px);
+}
+
+.search-bar {
+  height: 25px;
+  font-size: 20px;
+  align-items: center;
+  width: 600px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  border: solid rgb(224, 224, 224) 1px;
+}
+
+.category-buttons {
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 18px;
+  background-color: rgba(255, 255, 255, 0.316);
+  color: white;
+  border: white 2px;
+  width: 300px;
+  height: 50px;
+  border-radius: 10px;
+  font-family: 'Oswald', sans-serif;
+  box-shadow: rgba(7, 39, 7, 0.552) 0px 7px 29px 0px;
+  box-shadow:inset 0 -0.6em 1em -0.35em rgba(0,0,0,0.17),inset 0 0.6em 2em -0.3em rgba(255,255,255,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
+  
+}
+
+.category-buttons:hover {
+  background-color: #3e8e41;
+  transition-duration: .4s;
+  -webkit-transition-duration: 0.4s;
+}
+
+.category-buttons:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px rgb(26, 50, 33);
+  transform: translateY(4px);
+}
+
+.user-buttons {
+  font-size: 16px;
+  margin-left: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  background-color: white;
+  border: solid rgb(140, 127, 127) 1px;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100px;
+}
+
+.user-buttons:hover {
+  background-color: #3e8e41;
+  transition-duration: .4s;
+  -webkit-transition-duration: 0.4s;
+}
+
+.user-buttons:active{
+  background-color: #3e8e41;
+  box-shadow: 0 2px rgb(26, 50, 33);
+  transform: translateY(4px);
+}
+
+.header-buttons {
+  margin: 10px;
+
+}
+
+.category-header {
+  background-color:rgba(94, 137, 57, 0.479);
+  border: 2px solid rgb(255, 255, 255);
+}
