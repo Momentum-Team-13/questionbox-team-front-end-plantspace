@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Answers from './Answers'
 // import axios from 'axios';
 
 export default function Questions(props) {
-    const {expanded, setExpanded, questions} = props
+    const {questions} = props
 
     return (
         <>
@@ -18,8 +18,7 @@ export default function Questions(props) {
                             </div>
                             <p>Submitted by: {question.user}  on (date)</p>
                             <p>{question.body}</p>
-                        {/* <button onClick={() => setExpanded(!expanded)}>See More</button> */}
-                        <Answers expanded={expanded} setExpanded={setExpanded} questions={questions}/>
+                        <Answers answers={question.answers}/>
                         </div>
                     </>
                 )

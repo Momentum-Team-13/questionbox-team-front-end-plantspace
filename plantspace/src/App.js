@@ -34,11 +34,9 @@ function App() {
         "answers": [{ "user": "Frank", "body": "Get more lights!" }, { "user": "Tom", "body": "Pothos is a great low-light plant!" }]
     }
 ]
-  const [expanded, setExpanded] = useState(false)
   return (
     <div className="App">
-      <Questions expanded={expanded} setExpanded={setExpanded} questions={questions}/>
-      {/* <Answers expanded={expanded} setExpanded={setExpanded} questions={questions}/> */}
+      <Questions questions={questions}/>
     </div>
   );
 }

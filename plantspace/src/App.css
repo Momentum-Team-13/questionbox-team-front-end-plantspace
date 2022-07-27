@@ -1,7 +1,10 @@
 
 .individual_question {
   border: 2px solid;
-  padding-left: 20px;
+  /* padding-left: 20px;
+  padding-right: 20px; */
+  width: 80vw;
+  margin: auto;
 }
 
 .questions_title {
@@ -11,4 +14,10 @@
 .specific_question {
   display: flex;
   justify-content:  space-between;
+  padding-right: 20px;
+}
+
+.answer_body {
+  border: 2px solid green;
+  background-color: rgb(177, 240, 151);
 }
