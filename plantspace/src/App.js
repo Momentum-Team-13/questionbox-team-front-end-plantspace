@@ -1,7 +1,6 @@
 import './App.css';
-import React, { useState, useEffect } from 'react';
+import NavBar from "./Components/NavBar"
 import Questions from './Questions'
-import Answers from './Answers'
 
 function App() {
   const questions = [
@@ -36,6 +35,7 @@ function App() {
 ]
   return (
     <div className="App">
+      <NavBar />
       <Questions questions={questions}/>
     </div>
   );
