@@ -7,7 +7,7 @@ export default function Questions(props) {
 
     return (
         <>
-            <h1 className='questions_title'>Questions</h1>
+            <h3 className='questions_title'>All Q & A :</h3>
             {questions.map((question, index) => {
                 return (
                     <>

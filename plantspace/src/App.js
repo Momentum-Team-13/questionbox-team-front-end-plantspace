@@ -35,7 +35,7 @@ function App() {
 ]
   return (
     <div className="App">
-      <NavBar />
+      <NavBar questions={questions}/>
       <Questions questions={questions}/>
     </div>
   );
