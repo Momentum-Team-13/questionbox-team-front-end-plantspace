@@ -39,7 +39,7 @@ useEffect (() => {
     </div>
 
 {/* Search bar that filters through post content, and maps through dummy data. */}
-    {
+    {/* {
     Data.filter(post => {
         if (query === "") {
             return post;
@@ -56,7 +56,7 @@ useEffect (() => {
             <p>{post.post}</p>
         </div>
         ))
-    }
+    } */}
 
     
     </>
