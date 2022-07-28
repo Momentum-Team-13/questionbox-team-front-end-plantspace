@@ -1,9 +1,11 @@
 import './App.css';
+import { useState } from "react"
 import NavBar from "./Components/NavBar"
 import Questions from './Questions'
 import Login from './Login'
 import axios from 'axios'
-import React, { useState } from 'react';
+import ProfilePage from "./Components/ProfilePage"
+import AskQuestion from './Components/AskQuestion';
 
 
 function App() {
@@ -16,6 +18,10 @@ function App() {
     setToken(token)
     setUsername(username)
   }
+
+
+
+  
   const questions = [
     {
         "id": 1,
@@ -55,10 +61,21 @@ const isLoggedIn = username && token
 // }
  
   return (
-    <div className="App">
-      <NavBar questions={questions}/>
-      <Questions questions={questions}/>
-    </div>
+    <>
+    
+        <div className="App">
+          <NavBar questions={questions}/>
+          <div>
+        </div>
+        <AskQuestion />
+        <Questions questions={questions}/>
+        <ProfilePage 
+        questions={questions}
+        answers={questions.answers}/>
+      </div>
+      
+      
+    </>
   );
 }
 

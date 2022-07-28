@@ -1,14 +1,28 @@
-import react from "react"
 import { useState, useEffect } from "react"
-import Data from "../MOCK_DATA.json"
+import ProfilePage from "./ProfilePage"
+import Questions from "../Questions"
 
-export default function NavBar() {
+
+export default function NavBar(props) {
 const [query, setQuery] = useState("")
 const [category, setCategory] = useState("Home")
+const [profile, setProfile] = useState([])
+// const {questions} = props
+
+
+
+const profilePage = <ProfilePage />
+
+const handleProfile = (profilePage) => {
+    console.log("you have clicked profile.")
+    setProfile(profilePage)
+}
 
 useEffect (() => {
     setCategory(category)
 });
+
+
 
     return (
     <>
@@ -18,7 +32,7 @@ useEffect (() => {
             <h1> PlantSpace </h1>
             <h2>It ain't easy being green, but we're here to help.</h2>
             
-        
+        <nav>
             <div className="categories">
                 <button className="category-buttons" onClick = {() => {setCategory("Home")}}>Home</button>
                 <button className="category-buttons" onClick = {() => {setCategory("House Plants")}}>Houseplants</button>
@@ -30,7 +44,9 @@ useEffect (() => {
                 <input className= "search-bar" placeholder="Search all posts" onChange={event => setQuery(event.target.value)}/>
                 <button className="user-buttons">Log In</button>
                 <button className="user-buttons">Register</button>
+                <button className="user-buttons" onClick={() => handleProfile(profilePage)}>My Profile</button>
             </div>
+        </nav>
         </div>
     </div>
     </div>
@@ -38,22 +54,23 @@ useEffect (() => {
         <h3>{category}</h3>
     </div>
 
-{/* Search bar that filters through post content, and maps through dummy data. */}
-    {/* {
-    Data.filter(post => {
+
+
+ {/* {
+    questions.filter(questions => {
         if (query === "") {
-            return post;
-        } else if (post.post.toLowerCase().includes(query.toLowerCase())) {
-            return post;
-        } else if (post.title.toLowerCase().includes(query.toLowerCase())) {
-            return post;
-        } else if (post.username.toLowerCase().includes(query.toLowerCase())) {
-            return post;
-    }}).map((post, index) => (
+            return questions;
+        } else if (questions.user.toLowerCase().includes(query.toLowerCase())) {
+            return questions;
+        } else if (questions.title.toLowerCase().includes(query.toLowerCase())) {
+            return questions;
+        } else if (questions.body.toLowerCase().includes(query.toLowerCase())) {
+            return questions;
+    }}).map((question, index) => (
         <div key={index}>
-            <p>{post.username}</p>
-            <p>{post.title}</p>
-            <p>{post.post}</p>
+            <p>{question.user}</p>
+            <p>{question.title}</p>
+            <p>{question.body}</p>
         </div>
         ))
     } */}
