@@ -1,8 +1,21 @@
 import './App.css';
 import NavBar from "./Components/NavBar"
 import Questions from './Questions'
+import Login from './Login'
+import axios from 'axios'
+import React, { useState } from 'react';
+
 
 function App() {
+  const [token, setToken] = useState(null)
+  const [username, setUsername] = useState('')
+  const [error, setError] = useState(null)
+
+
+  const setAuth = (username, token) => {
+    setToken(token)
+    setUsername(username)
+  }
   const questions = [
     {
         "id": 1,
@@ -33,6 +46,14 @@ function App() {
         "answers": [{ "user": "Frank", "body": "Get more lights!" }, { "user": "Tom", "body": "Pothos is a great low-light plant!" }]
     }
 ]
+
+const isLoggedIn = username && token
+
+
+// if (!isLoggedIn) {
+//   return <Login setAuth={setAuth} />
+// }
+ 
   return (
     <div className="App">
       <NavBar questions={questions}/>
