@@ -1,8 +1,14 @@
 import './App.css';
+import { useState } from "react"
 import NavBar from "./Components/NavBar"
 import Questions from './Questions'
+import ProfilePage from "./Components/ProfilePage"
+import AskQuestion from './Components/AskQuestion';
+
 
 function App() {
+
+  
   const questions = [
     {
         "id": 1,
@@ -34,10 +40,21 @@ function App() {
     }
 ]
   return (
-    <div className="App">
-      <NavBar questions={questions}/>
-      <Questions questions={questions}/>
-    </div>
+    <>
+    
+        <div className="App">
+          <NavBar questions={questions}/>
+          <div>
+        </div>
+        <AskQuestion />
+        <Questions questions={questions}/>
+        <ProfilePage 
+        questions={questions}
+        answers={questions.answers}/>
+      </div>
+      
+      
+    </>
   );
 }
 
