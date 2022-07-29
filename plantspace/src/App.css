@@ -21,3 +21,10 @@
   border: 2px solid green;
   background-color: rgb(177, 240, 151);
 }
+
+#login-form, .login-form{
+  text-align: center;
+}
+ #username-field, #password {
+   margin: 10px;
+ }

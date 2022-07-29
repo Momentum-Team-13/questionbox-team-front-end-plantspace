@@ -7,7 +7,7 @@ export default function NavBar(props) {
 const [query, setQuery] = useState("")
 const [category, setCategory] = useState("Home")
 const [profile, setProfile] = useState([])
-// const {questions} = props
+
 
 
 
@@ -42,7 +42,7 @@ useEffect (() => {
 
             <div className="header-buttons">
                 <input className= "search-bar" placeholder="Search all posts" onChange={event => setQuery(event.target.value)}/>
-                <button className="user-buttons">Log In</button>
+                <button className="user-buttons" onClick ={() => alert("Log in!")}>Log In</button>
                 <button className="user-buttons">Register</button>
                 <button className="user-buttons" onClick={() => handleProfile(profilePage)}>My Profile</button>
             </div>
