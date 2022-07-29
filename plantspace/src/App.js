@@ -53,9 +53,9 @@ function App() {
 const isLoggedIn = username && token
 
 
-// if (!isLoggedIn) {
-//   return <Login setAuth={setAuth} />
-// }
+if (!isLoggedIn) {
+  return <Login setAuth={setAuth} />
+}
  
   return (
     <>
@@ -64,7 +64,7 @@ const isLoggedIn = username && token
           <NavBar questions={questions} Login={Login}/>
           <div>
         </div>
-        {/* <AskQuestion /> */}
+        <AskQuestion />
         <Routes>
           <Route 
             path="/login"
@@ -75,9 +75,9 @@ const isLoggedIn = username && token
             element={<Questions questions={questions} isLoggedIn={isLoggedIn} token={token}/>}
             />
          </Routes>
-        {/* <ProfilePage 
+        <ProfilePage 
         questions={questions}
-        answers={questions.answers}/> */}
+        answers={questions.answers}/>
       </div>
       
       
