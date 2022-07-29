@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import Answers from './Answers'
 // import axios from 'axios';
 
 export default function Questions(props) {
-    const {questions, isLoggedIn, setAuth, token} = props
-
+    const {questions, isLoggedIn, setAuth, token, username} = props
 
     return (
         <>
-            {isLoggedIn && <button>Ask a Question!</button>}
+            {isLoggedIn && <h2>Welcome, {username}!</h2>}
             <h3 className='questions_title'>All Q & A :</h3>
             {questions.map((question, index) => {
                 return (
