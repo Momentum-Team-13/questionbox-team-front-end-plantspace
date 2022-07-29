@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import ProfilePage from "./ProfilePage"
 import Questions from "../Questions"
+import AskQuestion from "./AskQuestion"
 
 
 export default function NavBar(props) {
@@ -51,9 +52,9 @@ useEffect (() => {
     </div>
     </div>
     <div className="category-header">
-        <h3>{category}</h3>
+        <h1>{category}</h1>
     </div>
-
+    <button className="question-header">        <AskQuestion /></button>
 
 
  {/* {
