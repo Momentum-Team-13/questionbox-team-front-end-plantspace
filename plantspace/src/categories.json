@@ -1,0 +1,14 @@
+const categories = [
+    {
+        "name": "Houseplants",
+        "id": 1
+    },
+    {
+        "name": "Outdoor plants",
+        "id": 2
+     },
+     {
+         "name": "Fruits and veggies",
+         "id": 3
+     }
+]

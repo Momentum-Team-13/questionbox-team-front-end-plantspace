@@ -2,11 +2,21 @@ import './App.css';
 import { useState } from "react"
 import NavBar from "./Components/NavBar"
 import Questions from './Questions'
+import Login from './Login'
+import axios from 'axios'
+import { Routes, Route } from 'react-router-dom'
 import ProfilePage from "./Components/ProfilePage"
 import AskQuestion from './Components/AskQuestion';
 
 
 function App() {
+  const [token, setToken] = useState(null)
+  const [username, setUsername] = useState('')
+
+  const setAuth = (username, token) => {
+    setToken(token)
+    setUsername(username)
+  }
 
   
   const questions = [
@@ -39,15 +49,32 @@ function App() {
         "answers": [{ "user": "Frank", "body": "Get more lights!" }, { "user": "Tom", "body": "Pothos is a great low-light plant!" }]
     }
 ]
+
+const isLoggedIn = username && token
+
+
+if (!isLoggedIn) {
+  return <Login setAuth={setAuth} />
+}
+ 
   return (
     <>
     
         <div className="App">
-          <NavBar questions={questions}/>
+          <NavBar questions={questions} Login={Login}/>
           <div>
         </div>
         <AskQuestion />
-        <Questions questions={questions}/>
+        <Routes>
+          <Route 
+            path="/login"
+            element={<Login setAuth={setAuth} isLoggedIn={isLoggedIn}/>}
+            />
+          <Route
+            path="/"
+            element={<Questions questions={questions} isLoggedIn={isLoggedIn} token={token}/>}
+            />
+         </Routes>
         <ProfilePage 
         questions={questions}
         answers={questions.answers}/>
