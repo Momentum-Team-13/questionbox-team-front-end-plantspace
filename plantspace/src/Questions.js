@@ -1,10 +1,10 @@
-import React, { useState, useEffect} from 'react';
-import Answers from './Answers'
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import Answers from './Answers'
 import IndividualQuestion from './IndividualQuestion';
 
 export default function Questions(props) {
-    const {isLoggedIn, username} = props
+    const {questions, isLoggedIn, setAuth, token, username} = props
     const [questionList, setQuestionList] = useState([])
 
     useEffect(() => {
@@ -16,6 +16,7 @@ export default function Questions(props) {
         })
     }, [] )
 
+    
 
     return (
         <>

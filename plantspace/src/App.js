@@ -5,19 +5,39 @@ import Questions from './Questions'
 import IndividualQuestion from './IndividualQuestion';
 import Login from './Login'
 import axios from 'axios'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate} from 'react-router-dom'
 import ProfilePage from "./Components/ProfilePage"
 import AskQuestion from './Components/AskQuestion';
+import useLocalStorageState from 'use-local-storage-state'
+
 
 
 function App() {
-  const [token, setToken] = useState(null)
-  const [username, setUsername] = useState('')
+  const [token, setToken] = useLocalStorageState('libraryToken', null)
+  const [username, setUsername] = useLocalStorageState('libraryUsername', '')
 
   const setAuth = (username, token) => {
     setToken(token)
     setUsername(username)
   }
+
+  const handleLogout = () => {
+    axios
+      .post(
+        'https://drf-library-api.herokuapp.com/api/auth/token/logout',
+        {},
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        }
+      )
+      .then(() =>
+        setAuth('', null)
+      )
+  }
+
+  const navigate = useNavigate()
 
   
 //   const questions = [
@@ -52,24 +72,19 @@ function App() {
 // ]
 
 const isLoggedIn = username && token
-
-
-if (!isLoggedIn) {
-  return <Login setAuth={setAuth} />
-}
  
   return (
     <>
     
         <div className="App">
-          <NavBar Login={Login}/>
+          <NavBar setAuth={setAuth} token={token} handleLogout={handleLogout}  Login={Login} isLoggedIn={isLoggedIn} navigate={navigate}/>
           <div>
         </div>
         <AskQuestion />
         <Routes>
           <Route 
             path="/login"
-            element={<Login setAuth={setAuth} isLoggedIn={isLoggedIn}/>}
+            element={<Login setAuth={setAuth} isLoggedIn={isLoggedIn} navigate={navigate}/>}
             />
           <Route
             path="/"
