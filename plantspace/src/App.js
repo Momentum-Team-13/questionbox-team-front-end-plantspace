@@ -2,6 +2,7 @@ import './App.css';
 import { useState } from "react"
 import NavBar from "./Components/NavBar"
 import Questions from './Questions'
+import IndividualQuestion from './IndividualQuestion';
 import Login from './Login'
 import axios from 'axios'
 import { Routes, Route } from 'react-router-dom'
@@ -19,36 +20,36 @@ function App() {
   }
 
   
-  const questions = [
-    {
-        "id": 1,
-        "user": "Matt",
-        "title": "Why is my pothos dying?",
-        "body": "I've had this plant for 2 years and I haven't changed anything and now it's dying, help!",
-        "answers": [{"user": "Elise", "body": "Do you make sure you take the dead leaves off?"}]
-    },
-    {
-        "id": 2,
-        "user": "Fred",
-        "title": "Garden of Weedin'",
-        "body": "Can anyone recommend a good environmentally friendly weed-killer?",
-        "answers": [{"user": "Tom", "body": "Try some vinegar!"}]
-    },
-    {
-        "id": 3,
-        "user": "Karen",
-        "title": "Low maintenance?",
-        "body": "What sort of plants would you suggest that are very low maintenance?",
-        "answers": [{"user": "Bob", "body": "I think pothos are great in low light!"}, {"user": "Julie", "body": "Snake plants are also great!"}]
-    },
-    {
-        "id": 4,
-        "user": "Katie",
-        "title": "Good low-light plants?",
-        "body": "I don't have a lot of light in my house and would like some suggestions for low-light plants!",
-        "answers": [{ "user": "Frank", "body": "Get more lights!" }, { "user": "Tom", "body": "Pothos is a great low-light plant!" }]
-    }
-]
+//   const questions = [
+//     {
+//         "id": 1,
+//         "user": "Matt",
+//         "title": "Why is my pothos dying?",
+//         "body": "I've had this plant for 2 years and I haven't changed anything and now it's dying, help!",
+//         "answers": [{"user": "Elise", "body": "Do you make sure you take the dead leaves off?"}]
+//     },
+//     {
+//         "id": 2,
+//         "user": "Fred",
+//         "title": "Garden of Weedin'",
+//         "body": "Can anyone recommend a good environmentally friendly weed-killer?",
+//         "answers": [{"user": "Tom", "body": "Try some vinegar!"}]
+//     },
+//     {
+//         "id": 3,
+//         "user": "Karen",
+//         "title": "Low maintenance?",
+//         "body": "What sort of plants would you suggest that are very low maintenance?",
+//         "answers": [{"user": "Bob", "body": "I think pothos are great in low light!"}, {"user": "Julie", "body": "Snake plants are also great!"}]
+//     },
+//     {
+//         "id": 4,
+//         "user": "Katie",
+//         "title": "Good low-light plants?",
+//         "body": "I don't have a lot of light in my house and would like some suggestions for low-light plants!",
+//         "answers": [{ "user": "Frank", "body": "Get more lights!" }, { "user": "Tom", "body": "Pothos is a great low-light plant!" }]
+//     }
+// ]
 
 const isLoggedIn = username && token
 
@@ -61,7 +62,7 @@ if (!isLoggedIn) {
     <>
     
         <div className="App">
-          <NavBar questions={questions} Login={Login}/>
+          <NavBar Login={Login}/>
           <div>
         </div>
         <AskQuestion />
@@ -72,12 +73,16 @@ if (!isLoggedIn) {
             />
           <Route
             path="/"
-            element={<Questions questions={questions} isLoggedIn={isLoggedIn} token={token}/>}
+            element={<Questions isLoggedIn={isLoggedIn} token={token} username={username}/>}
+            />
+          <Route
+            path="/question/{pk}"
+            element={<IndividualQuestion isLoggedIn={isLoggedIn} token={token} username={username}/>}
             />
          </Routes>
-        <ProfilePage 
+        {/* <ProfilePage 
         questions={questions}
-        answers={questions.answers}/>
+        answers={questions.answers}/> */}
       </div>
       
       

@@ -1,28 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import Answers from './Answers'
-// import axios from 'axios';
+import axios from 'axios';
+import IndividualQuestion from './IndividualQuestion';
 
 export default function Questions(props) {
-    const {questions, isLoggedIn, setAuth, token} = props
+    const {isLoggedIn, username} = props
+    const [questionList, setQuestionList] = useState([])
+
+    useEffect(() => {
+        axios.get('https://plantspace-fennec-foxes.herokuapp.com/api/questions')
+        .then(res => {
+            let results = (res.data)
+            setQuestionList(results)
+            console.log(questionList)
+        })
+    }, [] )
 
 
     return (
         <>
-            {isLoggedIn && <button>Ask a Question!</button>}
+            {isLoggedIn && <h2>Welcome, {username}!</h2>}
             <h3 className='questions_title'>All Q & A :</h3>
-            {questions.map((question, index) => {
+            {questionList.map((questionObject, index) => {
                 return (
-                    <>
-                        <div className='individual_question'>
-                            <div className='specific_question'>
-                                <h2 key={index}>{question.title} </h2>
-                                <p>Replies: {question.answers.length}</p>
-                            </div>
-                            <p>Submitted by: {question.user}  on (date)</p>
-                            <p>{question.body}</p>
-                        <Answers answers={question.answers}/>
-                        </div>
-                    </>
+                    <IndividualQuestion questionObject={questionObject} index={index} Answers={Answers} />
                 )
             })}
         </>
