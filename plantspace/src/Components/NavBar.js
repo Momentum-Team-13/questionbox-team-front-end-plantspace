@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react"
+import { Navigate } from "react-router-dom"
 import ProfilePage from "./ProfilePage"
 import Questions from "../Questions"
 import AskQuestion from "./AskQuestion"
 
 
+
 export default function NavBar(props) {
+const {navigate, handleLogout, token, login, question, isLoggedIn, setAuth} = props
 const [query, setQuery] = useState("")
 const [category, setCategory] = useState("Home")
 const [profile, setProfile] = useState([])
-
-
 
 
 const profilePage = <ProfilePage />
@@ -23,6 +24,9 @@ useEffect (() => {
     setCategory(category)
 });
 
+// const logout = () => {
+//     setAuth('', null)
+// }
 
 
     return (
@@ -35,7 +39,7 @@ useEffect (() => {
             
         <nav>
             <div className="categories">
-                <button className="category-buttons" onClick = {() => {setCategory("Home")}}>Home</button>
+                <button className="category-buttons" onClick ={() => navigate('/')}>Home</button>
                 <button className="category-buttons" onClick = {() => {setCategory("House Plants")}}>Houseplants</button>
                 <button className="category-buttons" onClick = {() => {setCategory("Outdoor Plants")}}>Outdoor Plants</button>
                 <button className="category-buttons" onClick = {() => {setCategory("Vegetables")}}>Vegetables</button>
@@ -43,9 +47,17 @@ useEffect (() => {
 
             <div className="header-buttons">
                 <input className= "search-bar" placeholder="Search all posts" onChange={event => setQuery(event.target.value)}/>
-                <button className="user-buttons" onClick ={() => alert("Log in!")}>Log In</button>
+                {isLoggedIn ? (
+                    <>
+                    <button className="user-buttons" onClick ={() => handleLogout()}>Logout</button>
+                    <button className="user-buttons" onClick={() => handleProfile(profilePage)}>My Profile</button>
+                    </>
+                ) : (
+                    <>
+                <button className="user-buttons" onClick ={() => navigate('/login')}>Log In</button>
                 <button className="user-buttons">Register</button>
-                <button className="user-buttons" onClick={() => handleProfile(profilePage)}>My Profile</button>
+                </>
+                )}
             </div>
         </nav>
         </div>
