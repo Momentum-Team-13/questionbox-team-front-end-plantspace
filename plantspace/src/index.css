@@ -191,3 +191,16 @@ p {
   box-shadow: 0 2px rgb(26, 50, 33);
   transform: translateY(4px);
 }
+
+.whole-question {
+  background-color: white;
+  margin: auto;
+  padding: 20px;
+}
+
+.question-labels {
+  font-family: Oswald;
+  font-size: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+}

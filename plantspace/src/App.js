@@ -56,7 +56,7 @@ function App() {
           <NavBar setAuth={setAuth} token={token} handleLogout={handleLogout}  Login={Login} isLoggedIn={isLoggedIn} navigate={navigate}/>
           <div>
         </div>
-        <AskQuestion />
+        <AskQuestion isLoggedIn={isLoggedIn} user={username} token={token}/>
         <Routes>
           <Route 
             path="/login"
