@@ -24,6 +24,7 @@ export default function Questions(props) {
     return (
         <>
             {isLoggedIn && <h2>Welcome, {username}!</h2>}
+            {/* {isLoggedIn && <button>Ask a Question!</button>} */}
             <h3 className='questions_title'>All Q & A :</h3>
             {questionList && questionList.map((questionObject, index) => {
                 return (

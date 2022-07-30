@@ -9,7 +9,7 @@ export default function Answers(props) {
                 <>
                 {expanded ? (
                     <>
-                        <button onClick={() => {setExpanded(!expanded)}}>See Less</button>
+                        <button className="answers-button" onClick={() => {setExpanded(!expanded)}}>See Less</button>
                         {answers.map((answer, index) => (
                             <>
                             <div className="answer_body">
@@ -20,7 +20,7 @@ export default function Answers(props) {
                         ))}
                     </>
                 ) : (
-                    <button onClick={() => {setExpanded(!expanded)}}>See Answers</button>
+                    <button className="answers-button" onClick={() => {setExpanded(!expanded)}}>See Answers</button>
                 )
                 }
                 </>
