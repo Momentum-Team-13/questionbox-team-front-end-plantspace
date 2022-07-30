@@ -28,3 +28,7 @@
  #username-field, #password {
    margin: 10px;
  }
+
+ .single_question {
+   border: 2px solid green;
+ }
