@@ -11,7 +11,7 @@ export default function Login({setAuth, isLoggedIn}) {
     const handleSubmit = (event) => {
         event.preventDefault()
         setError(null)
-        // don't forget to put the token in App and pass it down
+        
         axios.post('https://plantspace-fennec-foxes.herokuapp.com/auth/token/login/', {
             username: username,
             password: password,
