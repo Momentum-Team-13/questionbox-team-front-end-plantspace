@@ -22,13 +22,20 @@
   background-color: rgb(177, 240, 151);
 }
 
-#login-form, .login-form{
+#login-form, .login-form, #registration-form{
   text-align: center;
 }
- #username-field, #password {
+ #username-field, #password, #confirm-password {
    margin: 10px;
  }
 
  .single_question {
    border: 2px solid green;
+ }
+
+ .entire-login-form{
+   width: 300px;
+   height: 400px;
+   text-align: center;
+   margin: auto;
  }
