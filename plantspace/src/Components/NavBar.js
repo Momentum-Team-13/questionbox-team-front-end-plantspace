@@ -55,7 +55,7 @@ useEffect (() => {
                 ) : (
                     <>
                 <button className="user-buttons" onClick ={() => navigate('/login')}>Log In</button>
-                <button className="user-buttons">Register</button>
+                <button className="user-buttons" onClick ={() => navigate('/register')}>Register</button>
                 </>
                 )}
             </div>
@@ -64,7 +64,7 @@ useEffect (() => {
     </div>
     </div>
     <div className="category-header">
-        <h1>{category}</h1>
+        <h1>{category} 🌱</h1>
     </div>
     {/* <button className="question-header">        <AskQuestion /></button> */}
 

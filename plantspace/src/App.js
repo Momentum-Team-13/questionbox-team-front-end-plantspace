@@ -9,7 +9,8 @@ import Login from './Login'
 import axios from 'axios'
 import { Routes, Route, useNavigate, useParams} from 'react-router-dom'
 import ProfilePage from "./Components/ProfilePage"
-import AskQuestion from './Components/AskQuestion';
+import AskQuestion from './Components/AskQuestion'
+import Registration from './Registration';
 import useLocalStorageState from 'use-local-storage-state'
 
 
@@ -65,6 +66,11 @@ function App() {
               isLoggedIn={isLoggedIn} 
               navigate={navigate}
               />}
+            />
+          <Route
+            path="/register"
+            element={<Registration
+              navigate={navigate} />}
             />
           <Route
             path="/"
