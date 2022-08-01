@@ -19,8 +19,7 @@ const handleSubmit = event => {
     event.preventDefault()
     setError(null)
 
-    axios
-        .post(
+    axios.post(
             "https://plantspace-fennec-foxes.herokuapp.com/api/questions/new/", 
             {title, body, user},
         {

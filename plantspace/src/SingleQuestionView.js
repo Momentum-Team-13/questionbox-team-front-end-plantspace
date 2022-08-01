@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import React, { useEffect, useState } from 'react';
 import Answers from './Answers'
 import axios from 'axios';
@@ -6,20 +6,39 @@ import { RotatingLines } from 'react-loader-spinner'
 
 
 export default function SingleQuestionView(props) {
-    const { isLoggedIn } = props
+    const {isLoggedIn, username, token, navigate } = props
 
     const [singleQuestionList, setSingleQuestionList] = useState(null)
-    const [answer, setAnswer] = useState(null)
+    const [answer, setAnswer] = useState(null) 
+    const[error, setError] = useState(null)
 
     const params = useParams()
     // console.log(`QL: ${params.questionId}`)
+
+    const handleDelete = () => {
+        // event.preventDefault()
+        setError(null)
+
+        axios.delete(`https://plantspace-fennec-foxes.herokuapp.com/api/questions/${params.questionId}/trash`,
+            {
+                headers: { Authorization: `Token ${token}` },
+            })
+            .then((res) => {
+                navigate('/login');
+                console.log(res)
+            })
+            .catch((error) => {  
+                setError(error.message)
+            })
+    }
 
     useEffect(() => {
         axios.get(`https://plantspace-fennec-foxes.herokuapp.com/api/questions/${params.questionId}/details`)
             .then(res => {
                 let results = (res.data)
                 setSingleQuestionList(results)
-                // console.log(singleQuestionList)
+                console.log(singleQuestionList)
+                // console.log(results)
             })
     }, [])
 

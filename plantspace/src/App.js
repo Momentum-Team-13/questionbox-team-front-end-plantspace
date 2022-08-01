@@ -87,6 +87,7 @@ function App() {
               isLoggedIn={isLoggedIn} 
               token={token} 
               username={username}
+              navigate={navigate}
               />}
             />
           <Route
@@ -95,7 +96,8 @@ function App() {
               isLoggedIn={isLoggedIn} 
               token={token} 
               username={username} 
-              Answers={Answers} 
+              Answers={Answers}  
+              navigate={navigate}     
               />}
             />
          </Routes>
