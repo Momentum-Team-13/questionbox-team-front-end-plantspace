@@ -1,5 +1,5 @@
 import axios from "axios"
-import { useState, useEffect, useNavigate, Navigate } from 'react'
+import { useState } from 'react'
 
 
 export default function Registration(props) {

@@ -9,18 +9,25 @@ export default function SingleQuestionView(props) {
     const { isLoggedIn } = props
 
     const [singleQuestionList, setSingleQuestionList] = useState(null)
+    const [answer, setAnswer] = useState(null)
 
     const params = useParams()
-    console.log(`QL: ${params.questionId}`)
+    // console.log(`QL: ${params.questionId}`)
 
     useEffect(() => {
         axios.get(`https://plantspace-fennec-foxes.herokuapp.com/api/questions/${params.questionId}/details`)
             .then(res => {
                 let results = (res.data)
                 setSingleQuestionList(results)
-                console.log(singleQuestionList)
+                // console.log(singleQuestionList)
             })
     }, [])
+
+    function handleAnswerSubmit(e) {
+        e.preventDefault()
+        // console.log(e.target.value)
+        console.log(answer)
+    }
 
 
     return (
@@ -41,18 +48,23 @@ export default function SingleQuestionView(props) {
                 </div>}
             {isLoggedIn ? (
                 <>
-                    <h2>Submit an Answer Here:</h2>
-                    <form>
+                    <h2>Submit an Answer:</h2>
+                    <form onSubmit={handleAnswerSubmit}>
                         <textarea
                             rows={10}
                             cols={100}
+                            placeholder="Write Your Answer Here" 
+                            onChange={(e) => setAnswer(e.target.value)}                      
                         />
+                        <div className="form-submit">
+                            <input type="submit" value="Submit Answer" />
+                        </div>
                     </form>
                 </>
             ) : (
                 ('')
             )
-            } 
+            }
         </>
     )
 }
