@@ -61,7 +61,7 @@ useEffect ((category) => {
     <div className="category-header">
         <h1>{category} 🌱</h1>
     </div>
-    <button className="question-header">        <AskQuestion /></button>
+    {/* <button className="question-header">        <AskQuestion /></button> */}
 
 
     

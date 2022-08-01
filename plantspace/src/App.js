@@ -57,6 +57,10 @@ function App() {
           <NavBar setAuth={setAuth} token={token} handleLogout={handleLogout}  Login={Login} isLoggedIn={isLoggedIn} navigate={navigate}/>
           <div>
         </div>
+<<<<<<< Updated upstream
+=======
+        <AskQuestion isLoggedIn={isLoggedIn} user={username} token={token}/>
+>>>>>>> Stashed changes
         <Routes>
           <Route 
             path="/askquestion"

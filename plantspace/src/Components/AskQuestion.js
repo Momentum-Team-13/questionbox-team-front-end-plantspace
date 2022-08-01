@@ -19,7 +19,12 @@ const handleSubmit = event => {
     event.preventDefault()
     setError(null)
 
+<<<<<<< Updated upstream
     axios.post(
+=======
+    axios
+        .post(
+>>>>>>> Stashed changes
             "https://plantspace-fennec-foxes.herokuapp.com/api/questions/new/", 
             {title, body, user},
         {
@@ -37,7 +42,11 @@ const handleSubmit = event => {
     return (
     <>
     <div className="whole-question">   
+<<<<<<< Updated upstream
         {<Navigate to="/askQuestion" />} 
+=======
+        {/* {<Navigate to="/askQuestion" />}  */}
+>>>>>>> Stashed changes
         {isLoggedIn && <button className="question-button" onClick={handleClick}>Ask a Question!</button>}
         {isShown && 
         <form id="question-form" onSubmit={handleSubmit}>
