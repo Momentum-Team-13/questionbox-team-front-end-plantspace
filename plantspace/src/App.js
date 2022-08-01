@@ -54,11 +54,19 @@ function App() {
   return (
     <>
         <div className="App">
-          <NavBar setAuth={setAuth} token={token} handleLogout={handleLogout}  Login={Login} isLoggedIn={isLoggedIn} navigate={navigate}/>
+          <NavBar 
+            setAuth={setAuth}
+            token={token}
+            handleLogout={handleLogout}
+            Login={Login}
+            isLoggedIn={isLoggedIn}
+            navigate={navigate}/>
           <div>
         </div>
-        <AskQuestion isLoggedIn={isLoggedIn} user={username} token={token}/>
-
+        <AskQuestion 
+          isLoggedIn={isLoggedIn}
+          user={username}
+          token={token}/>
         <Routes>
           <Route 
             path="/askquestion"
