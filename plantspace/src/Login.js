@@ -15,7 +15,9 @@ export default function Login({setAuth, isLoggedIn}) {
         axios.post('https://plantspace-fennec-foxes.herokuapp.com/auth/token/login/', {
             username: username,
             password: password,
-        }).then((res) => {
+        },
+        )
+        .then((res) => {
             const token = res.data.auth_token
             setAuth(username, token)
         })

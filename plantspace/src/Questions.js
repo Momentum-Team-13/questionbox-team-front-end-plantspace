@@ -4,7 +4,7 @@ import Answers from './Answers'
 import IndividualQuestion from './IndividualQuestion';
 
 export default function Questions(props) {
-    const {isLoggedIn, username} = props
+    const {isLoggedIn, username, token, navigate} = props
 
     const [questionList, setQuestionList] = useState(null)
 
@@ -28,7 +28,15 @@ export default function Questions(props) {
             <h3 className='questions_title'>All Q & A :</h3>
             {questionList && questionList.map((questionObject, index) => {
                 return (
-                    <IndividualQuestion questionObject={questionObject} index={index} Answers={Answers} />
+                    <IndividualQuestion 
+                        questionObject={questionObject} 
+                        index={index} 
+                        Answers={Answers} 
+                        username={username}
+                        isLoggedIn={isLoggedIn}
+                        token={token}
+                        navigate={navigate}/>
+                        
                 )
             })}
         </>
