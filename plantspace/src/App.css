@@ -39,3 +39,8 @@
    text-align: center;
    margin: auto;
  }
+
+ .scrollbar {
+   height: 1000px;
+   overflow-y: scroll;
+ }

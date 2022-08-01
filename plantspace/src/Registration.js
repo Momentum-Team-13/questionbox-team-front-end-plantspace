@@ -30,14 +30,6 @@ export default function Registration(props) {
                 console.log(error)
             })
         }
-
-
-
-    // function handleRegistrationSubmit(e) {
-    //     e.preventDefault()
-    //     console.log(password)
-    // }
-
    
 
     return (
