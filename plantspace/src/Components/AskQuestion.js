@@ -1,5 +1,5 @@
 import {useState} from "react"
-import { Navigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import axios from "axios"
 
 export default function AskQuestion(props) {
@@ -11,6 +11,8 @@ const [question, setQuestion] = useState(null)
 
 const {isLoggedIn, token, user} = props
 
+const navigate = useNavigate()
+
 const handleClick = event => {
     setIsShown(current => !current);
 };
@@ -19,12 +21,9 @@ const handleSubmit = event => {
     event.preventDefault()
     setError(null)
 
-<<<<<<< Updated upstream
-    axios.post(
-=======
+
     axios
         .post(
->>>>>>> Stashed changes
             "https://plantspace-fennec-foxes.herokuapp.com/api/questions/new/", 
             {title, body, user},
         {
@@ -39,14 +38,12 @@ const handleSubmit = event => {
         })
 }
 
+
     return (
     <>
     <div className="whole-question">   
-<<<<<<< Updated upstream
-        {<Navigate to="/askQuestion" />} 
-=======
         {/* {<Navigate to="/askQuestion" />}  */}
->>>>>>> Stashed changes
+
         {isLoggedIn && <button className="question-button" onClick={handleClick}>Ask a Question!</button>}
         {isShown && 
         <form id="question-form" onSubmit={handleSubmit}>

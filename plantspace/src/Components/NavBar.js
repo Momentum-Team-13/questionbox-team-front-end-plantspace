@@ -13,11 +13,6 @@ const [category, setCategory] = useState("Home")
 const [profile, setProfile] = useState([])
 
 
-const handleProfile = (profilePage) => {
-    console.log("you have clicked profile.")
-    setProfile(profilePage)
-}
-
 useEffect ((category) => {
     setCategory(category)
 }, []);
@@ -34,7 +29,7 @@ useEffect ((category) => {
             
         <nav>
             <div className="categories">
-                <button className="category-buttons" onClick ={() => navigate('/')}>Home</button>
+                <button className="category-buttons" onClick ={() => navigate('/')}>All Questions</button>
                 <button className="category-buttons" onClick = {() => {setCategory("House Plants")}}>Houseplants</button>
                 <button className="category-buttons" onClick = {() => {setCategory("Outdoor Plants")}}>Outdoor Plants</button>
                 <button className="category-buttons" onClick = {() => {setCategory("Vegetables")}}>Vegetables</button>
@@ -62,9 +57,6 @@ useEffect ((category) => {
         <h1>{category} 🌱</h1>
     </div>
     {/* <button className="question-header">        <AskQuestion /></button> */}
-
-
-    
     </>
     );
 };

@@ -27,7 +27,7 @@ useEffect(() => {
 
 return (
         <>
-            <h1>My Profile</h1>
+            <h3>My Profile</h3>
 
         </>
     );
