@@ -13,20 +13,15 @@ const [category, setCategory] = useState("Home")
 const [profile, setProfile] = useState([])
 
 
-const profilePage = <ProfilePage />
-
 const handleProfile = (profilePage) => {
     console.log("you have clicked profile.")
     setProfile(profilePage)
 }
 
-useEffect (() => {
+useEffect ((category) => {
     setCategory(category)
-});
+}, []);
 
-// const logout = () => {
-//     setAuth('', null)
-// }
 
 
     return (
@@ -50,7 +45,7 @@ useEffect (() => {
                 {isLoggedIn ? (
                     <>
                     <button className="user-buttons" onClick ={() => handleLogout()}>Logout</button>
-                    <button className="user-buttons" onClick={() => handleProfile(profilePage)}>My Profile</button>
+                    <button className="user-buttons" onClick={() => navigate("/myprofile")}>My Profile</button>
                     </>
                 ) : (
                     <>
@@ -66,27 +61,8 @@ useEffect (() => {
     <div className="category-header">
         <h1>{category} 🌱</h1>
     </div>
-    {/* <button className="question-header">        <AskQuestion /></button> */}
+    <button className="question-header">        <AskQuestion /></button>
 
-
- {/* {
-    questions.filter(questions => {
-        if (query === "") {
-            return questions;
-        } else if (questions.user.toLowerCase().includes(query.toLowerCase())) {
-            return questions;
-        } else if (questions.title.toLowerCase().includes(query.toLowerCase())) {
-            return questions;
-        } else if (questions.body.toLowerCase().includes(query.toLowerCase())) {
-            return questions;
-    }}).map((question, index) => (
-        <div key={index}>
-            <p>{question.user}</p>
-            <p>{question.title}</p>
-            <p>{question.body}</p>
-        </div>
-        ))
-    } */}
 
     
     </>

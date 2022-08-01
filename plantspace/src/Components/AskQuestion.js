@@ -37,7 +37,7 @@ const handleSubmit = event => {
     return (
     <>
     <div className="whole-question">   
-        {/* {<Navigate to="/askQuestion" />}  */}
+        {<Navigate to="/askQuestion" />} 
         {isLoggedIn && <button className="question-button" onClick={handleClick}>Ask a Question!</button>}
         {isShown && 
         <form id="question-form" onSubmit={handleSubmit}>

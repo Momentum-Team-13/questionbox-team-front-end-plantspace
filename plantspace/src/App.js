@@ -57,8 +57,15 @@ function App() {
           <NavBar setAuth={setAuth} token={token} handleLogout={handleLogout}  Login={Login} isLoggedIn={isLoggedIn} navigate={navigate}/>
           <div>
         </div>
-        <AskQuestion isLoggedIn={isLoggedIn} user={username} token={token}/>
         <Routes>
+          <Route 
+            path="/askquestion"
+            element={<AskQuestion 
+              isLoggedIn={isLoggedIn} 
+              user={username} 
+              navigate={navigate}
+              token={token}/>}
+          />
           <Route 
             path="/login"
             element={<Login 
@@ -91,10 +98,17 @@ function App() {
               navigate={navigate}     
               />}
             />
+          <Route 
+            path="/myprofile"
+            element={<ProfilePage
+              isLoggedIn={isLoggedIn}
+              token={token}
+              navigate={navigate}
+              username={username}
+              />}
+              />
          </Routes>
-        {/* <ProfilePage 
-        questions={questions}
-        answers={questions.answers}/> */}
+
       </div>
       
       
