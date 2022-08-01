@@ -4,20 +4,20 @@ import Answers from './Answers'
 import IndividualQuestion from './IndividualQuestion';
 
 export default function Questions(props) {
-    const {isLoggedIn, username} = props
+    const { isLoggedIn, username } = props
 
     const [questionList, setQuestionList] = useState(null)
 
-    
+
 
     useEffect(() => {
         axios.get('https://plantspace-fennec-foxes.herokuapp.com/api/questions')
-        .then(res => {
-            let results = (res.data)
-            setQuestionList(results)
-            console.log(results)
-        })
-    }, [] )
+            .then(res => {
+                let results = (res.data)
+                setQuestionList(results.reverse())
+                console.log(results)
+            })
+    }, [])
 
 
 
@@ -26,11 +26,13 @@ export default function Questions(props) {
             {isLoggedIn && <h2>Welcome, {username}! 🌻</h2>}
             {/* {isLoggedIn && <button>Ask a Question!</button>} */}
             <h3 className='questions_title'>All Q & A :</h3>
-            {questionList && questionList.map((questionObject, index) => {
-                return (
-                    <IndividualQuestion questionObject={questionObject} index={index} Answers={Answers} />
-                )
-            })}
+            <div className='scrollbar'>
+                {questionList && questionList.map((questionObject, index) => {
+                    return (
+                        <IndividualQuestion questionObject={questionObject} index={index} Answers={Answers} />
+                    )
+                })}
+            </div>
         </>
     )
 }

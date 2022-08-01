@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom'
-
+import Moment from 'react-moment';
+import moment from 'moment'
 
 export default function IndividualQuestion(props) {
     const {questionObject, index} = props
 
-     return (
+    
+    // const dateToFormat = new Date('DD/MM/YYYY');
+    
+    return (
         <>
             <div className='individual_question'>
                 <div className='specific_question'>
@@ -12,7 +16,7 @@ export default function IndividualQuestion(props) {
                     <p>Replies: </p>
                         {/* {questionObject.answers.length}</p> */}
                 </div>
-                <p>Submitted by: {questionObject.user}  on (date)</p>
+                <p>Submitted by: {questionObject.user}  on {moment(questionObject.created_at).format('MM/DD/YY h:mm a')} </p>
                 <p>{questionObject.body}</p>
                 
             </div>
