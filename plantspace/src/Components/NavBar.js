@@ -41,11 +41,13 @@ useEffect ((category) => {
                     <>
                     <button className="user-buttons" onClick ={() => handleLogout()}>Logout</button>
                     <button className="user-buttons" onClick={() => navigate("/myprofile")}>My Profile</button>
+                    <button className="user-buttons" onClick ={() => navigate('/askquestion')}>Ask a Question</button>
                     </>
                 ) : (
                     <>
                 <button className="user-buttons" onClick ={() => navigate('/login')}>Log In</button>
                 <button className="user-buttons" onClick ={() => navigate('/register')}>Register</button>
+                
                 </>
                 )}
             </div>
@@ -56,7 +58,6 @@ useEffect ((category) => {
     <div className="category-header">
         <h1>{category} 🌱</h1>
     </div>
-    {/* <button className="question-header">        <AskQuestion /></button> */}
     </>
     );
 };

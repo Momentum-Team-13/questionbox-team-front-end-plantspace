@@ -4,13 +4,16 @@ import Answers from '../Answers'
 import Data from "../MOCK_DATA.json"
 import { Navigate } from "react-router-dom"
 import axios from "axios";
+import Moment from "react-moment";
+import moment from 'moment'
+import { Link, useParams} from 'react-router-dom'
 
 
 export default function ProfilePage (props) {
 const [expandedQuestions, setExpandedQuestions] = useState(false);
 const [expandedAnswers, setExpandedAnswers] = useState(false)
 const [myQuestionList, setMyQuestionList] = useState(null)
-const {questions, answers, isLoggedIn, username} = props
+const {questions, answers, isLoggedIn, username, index, token, navigate, questionObject} = props
 
 let myUsername = {username}
 
@@ -28,7 +31,6 @@ useEffect(() => {
 return (
         <>
             <h3>My Profile</h3>
-
         </>
     );
 }
