@@ -1,29 +1,31 @@
 import React, { useState } from 'react';
 import Questions from './Questions'
+import moment from 'moment';
 
 
 export default function Answers(props) {
     const [expanded, setExpanded] = useState(false)
-    const {answers} = props
+    const { answerList } = props
+    // console.log(questionList)
     return (
+        <>
+            {expanded ? (
                 <>
-                {expanded ? (
-                    <>
-                        <button className="answers-button" onClick={() => {setExpanded(!expanded)}}>See Less</button>
-                        {answers.map((answer, index) => (
-                            <>
-                            <div className="answer_body">
-                                <p>{answer.user} says:</p>
-                                {answer.body}
+                    <button className="answers-button" onClick={() => { setExpanded(!expanded) }}>See Less</button>
+                    {answerList.map((answer, index) => (
+                        <>
+                            <div className='individual-answer'>
+                                <p key={index}>{answer.answer_body}</p>
+                                <p> Answered by: {answer.user} on on {moment(answer.created_at).format('MM/DD/YY h:mm a')}</p>
                             </div>
-                            </>
-                        ))}
-                    </>
-                ) : (
-                    <button className="answers-button" onClick={() => {setExpanded(!expanded)}}>See Answers</button>
-                )
-                }
+                        </>
+                    ))}
                 </>
+            ) : (
+                <button className="answers-button" onClick={() => { setExpanded(!expanded) }}>See Answers</button>
             )
-    }
+            }
+        </>
+    )
+}
 

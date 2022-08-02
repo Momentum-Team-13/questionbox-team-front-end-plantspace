@@ -6,10 +6,10 @@ import { RotatingLines } from 'react-loader-spinner'
 
 
 export default function SingleQuestionView(props) {
-    const {isLoggedIn, username, token, navigate } = props
+    const {isLoggedIn, username, token, navigate, answerList } = props
 
     const [singleQuestionList, setSingleQuestionList] = useState(null)
-    const [answer, setAnswer] = useState(null) 
+    const [answer_body, setAnswer_Body] = useState(null) 
     const[error, setError] = useState(null)
 
     const params = useParams()
@@ -37,15 +37,29 @@ export default function SingleQuestionView(props) {
             .then(res => {
                 let results = (res.data)
                 setSingleQuestionList(results)
-                console.log(singleQuestionList)
-                // console.log(results)
+                // console.log(singleQuestionList)
+                console.log(results)
             })
     }, [])
 
     function handleAnswerSubmit(e) {
         e.preventDefault()
-        // console.log(e.target.value)
-        console.log(answer)
+        setError(null)
+        axios.post(`https://plantspace-fennec-foxes.herokuapp.com/api/questions/${params.questionId}/answer/`, 
+              {answer_body},
+        {
+            headers: { Authorization: `Token ${token}` 
+        },
+        })
+        .then((res) => {
+            alert("Thank you for your answer!")
+            navigate('/');
+            
+        })
+        .catch((error) => {
+            setError(Object.values(error.response.data))
+            console.log(error)
+        })
     }
 
 
@@ -64,8 +78,9 @@ export default function SingleQuestionView(props) {
                     <h2>{singleQuestionList.title}</h2>
                     <p>Submitted by: {singleQuestionList.user}</p>
                     <h2>{singleQuestionList.body}</h2>
+                    <Answers answerList={singleQuestionList.answers}/>
                     {username === singleQuestionList.user ? (
-                    <button onClick={() => handleDelete()}>Delete Question</button>
+                    <button className='answers-button' onClick={() => handleDelete()}>Delete Question</button>
                 ) : (
                     ('')
                 )
@@ -79,7 +94,7 @@ export default function SingleQuestionView(props) {
                             rows={10}
                             cols={100}
                             placeholder="Write Your Answer Here" 
-                            onChange={(e) => setAnswer(e.target.value)}                      
+                            onChange={(e) => setAnswer_Body(e.target.value)}                      
                         />
                         <div className="form-submit">
                             <input type="submit" value="Submit Answer" />
