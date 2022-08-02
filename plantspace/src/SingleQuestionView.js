@@ -63,7 +63,7 @@ export default function SingleQuestionView(props) {
                 <div className="single_question">
                     <h2>{singleQuestionList.title}</h2>
                     <p>Submitted by: {singleQuestionList.user}</p>
-                    <h2>{singleQuestionList.body}</h2>
+                    <h4>{singleQuestionList.body}</h4>
                     {username === singleQuestionList.user ? (
                     <button onClick={() => handleDelete()}>Delete Question</button>
                 ) : (

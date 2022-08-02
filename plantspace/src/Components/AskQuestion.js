@@ -16,13 +16,14 @@ const {isLoggedIn, token, user} = props
 const navigate = useNavigate()
 
 
-const handleClick = event => {
-    setIsShown(current => !current);
-};
+const handleChange = (event) => {
+    setCategory({value: event.target.value});
+}
 
 const handleSubmit = event => {
     event.preventDefault()
     setError(null)
+
 
 
     axios
@@ -34,7 +35,7 @@ const handleSubmit = event => {
         })
         
         .then ((response) => 
-        {setQuestion(response.data)
+        {navigate("/")
         })
         .catch((error) => {
             setError(error.message)
@@ -45,8 +46,6 @@ const handleSubmit = event => {
     return (
     <>
     <div className="whole-question">   
-        {isLoggedIn && <button className="question-button" onClick={handleClick}>Ask a Question!</button>}
-        {isShown && 
         <form id="question-form" onSubmit={handleSubmit}>
             <label className="question-labels">Title:   
                 <input 
@@ -56,10 +55,10 @@ const handleSubmit = event => {
                     onChange={(e) => setTitle(e.target.value)} />
             </label> <br /> <br />
             <label className="question-labels">Category:
-            <select name="category" id="categories">
-                <option value="HOUSE_PLANTS" onChange={(e) => setCategory(e.target.value)}>House Plants</option>
-                <option value="OUTDOOR_PLANTS" onChange={(e) => setCategory(e.target.value)}>Outdoor Plants</option>
-                <option value="VEGETABLES" onChange={(e) => setCategory(e.target.value)}>Vegetables</option>
+            <select value={category} onChange={(e) => setCategory(e.target.value)} className="category" id="categories">
+                <option value="1">House Plants</option>
+                <option value="2">Outdoor Plants</option>
+                <option value="3">Vegetables</option>
             </select>
             </label> <br /> <br />
             <label className="question-labels">Question:
@@ -70,12 +69,8 @@ const handleSubmit = event => {
                     value={body}
                     onChange={(e) => setBody(e.target.value)} />
             </label>
-            <input type="submit" />
-        </form>}
-    </div>
-    <div>
-        {/* <h3>{question.title}</h3>
-        <p>{question.body}</p> */}
+            <input type="submit" onClick ={handleSubmit}/>
+        </form>
     </div>
     </>
     )

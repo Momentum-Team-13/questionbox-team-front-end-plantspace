@@ -63,10 +63,6 @@ function App() {
             navigate={navigate}/>
           <div>
         </div>
-        <AskQuestion 
-          isLoggedIn={isLoggedIn}
-          user={username}
-          token={token}/>
         <Routes>
           <Route 
             path="/askquestion"
