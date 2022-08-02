@@ -7,7 +7,7 @@ import AskQuestion from "./AskQuestion"
 
 
 export default function NavBar(props) {
-const {navigate, handleLogout, token, login, question, isLoggedIn, setAuth} = props
+const {navigate, handleLogout, token, login, question, isLoggedIn, setAuth, setSelectedCategory} = props
 const [query, setQuery] = useState("")
 const [category, setCategory] = useState("Home")
 const [profile, setProfile] = useState([])
@@ -29,10 +29,10 @@ useEffect ((category) => {
             
         <nav>
             <div className="categories">
-                <button className="category-buttons" onClick ={() => {navigate('/'); {setCategory("Home")}}}>All Questions</button>
-                <button className="category-buttons" onClick = {() => {setCategory("House Plants")}}>Houseplants</button>
-                <button className="category-buttons" onClick = {() => {setCategory("Outdoor Plants")}}>Outdoor Plants</button>
-                <button className="category-buttons" onClick = {() => {setCategory("Vegetables")}}>Vegetables</button>
+                <button className="category-buttons" onClick ={() => {navigate('/'); setCategory("Home")}}>All Questions</button>
+                <button className="category-buttons" onClick = {() => {setSelectedCategory("House Plants"); setCategory("House Plants")}}>Houseplants</button>
+                <button className="category-buttons" onClick = {() => {setSelectedCategory("Outdoor Plants"); setCategory("Outdoor Plants")}}>Outdoor Plants</button>
+                <button className="category-buttons" onClick = {() => {setSelectedCategory("Vegetables"); setCategory("Vegetables")}}>Vegetables</button>
             </div>
 
             <div className="header-buttons">

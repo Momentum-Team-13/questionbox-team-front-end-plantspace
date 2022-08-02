@@ -25,6 +25,7 @@ a:visited {
 .questions_title {
   text-align:left;
   font-family: 'Oswald', sans-serif;
+  color: rgb(55, 121, 55);
 }
 
 .specific_question {
@@ -78,5 +79,9 @@ a {
  }
 
  .individual-answer {
-   border: 2px solid;
+   border: 2px solid rgb(148, 164, 148);
+   border-radius: 4px;
+   background-image: linear-gradient(rgb(239, 252, 240), rgb(222, 238, 222));
+   margin: 5px;
+
  }

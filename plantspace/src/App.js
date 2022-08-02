@@ -11,13 +11,15 @@ import ProfilePage from "./Components/ProfilePage"
 import AskQuestion from './Components/AskQuestion'
 import Registration from './Registration';
 import useLocalStorageState from 'use-local-storage-state'
+import { useState } from "react"
 
 
 
 function App() {
   const [token, setToken] = useLocalStorageState('plantToken', null)
   const [username, setUsername] = useLocalStorageState('plantUsername', '')
- 
+  const [selectedCategory, setSelectedCategory] = useState(null)
+
   
 
 
@@ -54,6 +56,7 @@ function App() {
             setAuth={setAuth}
             token={token}
             handleLogout={handleLogout}
+            setSelectedCategory={setSelectedCategory}
             Login={Login}
             isLoggedIn={isLoggedIn}
             navigate={navigate}/>
@@ -90,6 +93,7 @@ function App() {
               token={token} 
               username={username}
               navigate={navigate}
+              categoryName={selectedCategory}
               />}
             />
           <Route
@@ -111,7 +115,7 @@ function App() {
               username={username}
               />}
               />
-         </Routes>
+          </Routes>
 
       </div>
       

@@ -4,7 +4,7 @@ import Answers from './Answers'
 import IndividualQuestion from './IndividualQuestion';
 
 export default function Questions(props) {
-    const { isLoggedIn, username, token, navigate} = props
+    const { isLoggedIn, username, token, navigate, categoryName} = props
 
     const [questionList, setQuestionList] = useState(null)
 
@@ -14,10 +14,14 @@ export default function Questions(props) {
         axios.get('https://plantspace-fennec-foxes.herokuapp.com/api/questions')
             .then(res => {
                 let results = (res.data)
+                // if we have a category name, take the results and filter to keep everything that matches our category name.
+                if (categoryName) {
+                    results = results.filter((question) => question.category_name === categoryName) 
+                }
                 setQuestionList(results.reverse())
                 console.log(results)
             })
-    }, [])
+    }, [categoryName])
 
 
 
