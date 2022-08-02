@@ -9,7 +9,11 @@ export default function Answers(props) {
     // console.log(questionList)
     return (
         <>
-            {expanded ? (
+            {answerList.length === 0 && 
+                <button className='answers-button' disabled={true}>Sorry, no answers yet!</button>
+            }
+
+            {answerList.length !== 0 && expanded && (
                 <>
                     <button className="answers-button" onClick={() => { setExpanded(!expanded) }}>See Less</button>
                     {answerList.map((answer, index) => (
@@ -21,10 +25,11 @@ export default function Answers(props) {
                         </>
                     ))}
                 </>
-            ) : (
+            )}
+
+            {answerList.length !== 0 && !expanded && (
                 <button className="answers-button" onClick={() => { setExpanded(!expanded) }}>See Answers</button>
-            )
-            }
+            )}
         </>
     )
 }

@@ -75,7 +75,8 @@ function App() {
           <Route
             path="/register"
             element={<Registration
-              navigate={navigate} />}
+              navigate={navigate}
+              />}
             />
           <Route
             path="/"
