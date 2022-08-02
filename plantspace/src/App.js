@@ -80,6 +80,7 @@ function App() {
             path="/register"
             element={<Registration
               navigate={navigate}
+              setAuth={setAuth}
               />}
             />
           <Route
