@@ -17,7 +17,8 @@ const navigate = useNavigate()
 
 
 const handleChange = (event) => {
-    setCategory({value: event.target.value});
+    setCategory(parseInt(event.target.value));
+    console.log(event.target.value)
 }
 
 const handleSubmit = event => {
@@ -55,7 +56,8 @@ const handleSubmit = event => {
                     onChange={(e) => setTitle(e.target.value)} />
             </label> <br /> <br />
             <label className="question-labels">Category:
-            <select value={category} onChange={(e) => setCategory(e.target.value)} className="category" id="categories">
+            <select value={category} onChange={handleChange} className="category" id="categories">
+                <option value="">Please Select a Category</option>
                 <option value="1">House Plants</option>
                 <option value="2">Outdoor Plants</option>
                 <option value="3">Vegetables</option>
