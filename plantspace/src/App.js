@@ -1,5 +1,4 @@
-import './App.css';
-import { useState } from "react"
+import './App.css'
 import NavBar from "./Components/NavBar"
 import Questions from './Questions'
 import SingleQuestionView from './SingleQuestionView';
@@ -16,8 +15,8 @@ import useLocalStorageState from 'use-local-storage-state'
 
 
 function App() {
-  const [token, setToken] = useLocalStorageState('libraryToken', null)
-  const [username, setUsername] = useLocalStorageState('libraryUsername', '')
+  const [token, setToken] = useLocalStorageState('plantToken', null)
+  const [username, setUsername] = useLocalStorageState('plantUsername', '')
  
   
 
@@ -28,7 +27,6 @@ function App() {
   }
 
   const handleLogout = () => {
-    console.log(`Logging out with token ${token}`)
     axios
       .post(
         'https://plantspace-fennec-foxes.herokuapp.com/auth/token/logout',
@@ -45,8 +43,6 @@ function App() {
   }
 
   const navigate = useNavigate()
-
- 
 
 
   const isLoggedIn = username && token
@@ -83,7 +79,8 @@ function App() {
           <Route
             path="/register"
             element={<Registration
-              navigate={navigate} />}
+              navigate={navigate}
+              />}
             />
           <Route
             path="/"

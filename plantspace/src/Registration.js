@@ -22,7 +22,7 @@ export default function Registration(props) {
                 username: username,
                 password: password,
                 email: email,
-            }).then((res) => {
+            }).then((res) => {      
                 navigate('/login');
             })
             .catch((error) => {
