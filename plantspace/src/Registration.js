@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 export default function Registration(props) {
 
-    const { navigate } = props
+    const { navigate, setAuth } = props
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
@@ -23,7 +23,22 @@ export default function Registration(props) {
                 password: password,
                 email: email,
             }).then((res) => {      
-                navigate('/login');
+                event.preventDefault()
+                setError(null)
+                
+                axios.post('https://plantspace-fennec-foxes.herokuapp.com/auth/token/login/', {
+                    username: username,
+                    password: password,
+                },
+                )
+                .then((res) => {
+                    const token = res.data.auth_token
+                    setAuth(username, token)
+                    navigate('/')
+                })
+                .catch((error) => {
+                    setError(error.message)
+                })
             })
             .catch((error) => {
                 setError(Object.values(error.response.data))
