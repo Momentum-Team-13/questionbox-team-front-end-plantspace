@@ -29,7 +29,7 @@ useEffect ((category) => {
             
         <nav>
             <div className="categories">
-                <button className="category-buttons" onClick ={() => navigate('/')}>All Questions</button>
+                <button className="category-buttons" onClick ={() => {navigate('/'); {setCategory("Home")}}}>All Questions</button>
                 <button className="category-buttons" onClick = {() => {setCategory("House Plants")}}>Houseplants</button>
                 <button className="category-buttons" onClick = {() => {setCategory("Outdoor Plants")}}>Outdoor Plants</button>
                 <button className="category-buttons" onClick = {() => {setCategory("Vegetables")}}>Vegetables</button>
