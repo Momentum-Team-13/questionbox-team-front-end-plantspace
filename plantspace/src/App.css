@@ -10,6 +10,16 @@
   /* margin: auto; */
 }
 
+a {
+  color: rgb(62, 126, 81);
+  text-decoration: none;
+}
+
+a:visited {
+  color:rgb(100, 126, 141);
+  text-decoration: none;
+}
+
 .questions_title {
   text-align:left;
   font-family: 'Oswald', sans-serif;
