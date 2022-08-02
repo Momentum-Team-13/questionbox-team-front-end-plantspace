@@ -26,7 +26,7 @@ export default function IndividualQuestion(props) {
                 <p className="question_body">{questionObject.body}</p>
                 <div className="submitted_by">
                     <p>Submitted by: {questionObject.user}  on {moment(questionObject.created_at).format('MM/DD/YY h:mm a')} </p>
-                    <p>Category: {questionObject.category}</p>
+                    <p>Category: {questionObject.category_name}</p>
                     {/* <p>Answers: {questionObject.answers[0].answer_body}</p> */}
                     <Answers answerList={questionObject.answers}/>
                 </div>

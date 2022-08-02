@@ -1,19 +1,35 @@
 
 .individual_question {
-  border: 2px solid;
+  border: 3px solid rgb(195, 220, 184);
   border-radius: 10px;
-  width: 80vw;
-  margin: auto;
+  background-color: white;
   margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80vw;
+  /* margin: auto; */
+}
+
+a {
+  color: rgb(62, 126, 81);
+  text-decoration: none;
+}
+
+a:visited {
+  color:rgb(59, 114, 145);
+  text-decoration: none;
 }
 
 .questions_title {
   text-align:left;
+  font-family: 'Oswald', sans-serif;
 }
 
 .specific_question {
   display: flex;
   justify-content:  space-between;
+  font-family: 'Oswald', sans-serif;
+  font-weight: bold;
   padding-right: 20px;
   color: darkgreen;
 }

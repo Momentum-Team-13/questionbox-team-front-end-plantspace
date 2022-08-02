@@ -13,20 +13,10 @@ const [category, setCategory] = useState("Home")
 const [profile, setProfile] = useState([])
 
 
-const profilePage = <ProfilePage />
-
-const handleProfile = (profilePage) => {
-    console.log("you have clicked profile.")
-    setProfile(profilePage)
-}
-
-useEffect (() => {
+useEffect ((category) => {
     setCategory(category)
-});
+}, []);
 
-// const logout = () => {
-//     setAuth('', null)
-// }
 
 
     return (
@@ -39,7 +29,7 @@ useEffect (() => {
             
         <nav>
             <div className="categories">
-                <button className="category-buttons" onClick ={() => navigate('/')}>Home</button>
+                <button className="category-buttons" onClick ={() => navigate('/')}>All Questions</button>
                 <button className="category-buttons" onClick = {() => {setCategory("House Plants")}}>Houseplants</button>
                 <button className="category-buttons" onClick = {() => {setCategory("Outdoor Plants")}}>Outdoor Plants</button>
                 <button className="category-buttons" onClick = {() => {setCategory("Vegetables")}}>Vegetables</button>
@@ -50,12 +40,14 @@ useEffect (() => {
                 {isLoggedIn ? (
                     <>
                     <button className="user-buttons" onClick ={() => handleLogout()}>Logout</button>
-                    <button className="user-buttons" onClick={() => handleProfile(profilePage)}>My Profile</button>
+                    <button className="user-buttons" onClick={() => navigate("/myprofile")}>My Profile</button>
+                    <button className="user-buttons" onClick ={() => navigate('/askquestion')}>Ask a Question</button>
                     </>
                 ) : (
                     <>
                 <button className="user-buttons" onClick ={() => navigate('/login')}>Log In</button>
                 <button className="user-buttons" onClick ={() => navigate('/register')}>Register</button>
+                
                 </>
                 )}
             </div>
@@ -66,29 +58,6 @@ useEffect (() => {
     <div className="category-header">
         <h1>{category} 🌱</h1>
     </div>
-    {/* <button className="question-header">        <AskQuestion /></button> */}
-
-
- {/* {
-    questions.filter(questions => {
-        if (query === "") {
-            return questions;
-        } else if (questions.user.toLowerCase().includes(query.toLowerCase())) {
-            return questions;
-        } else if (questions.title.toLowerCase().includes(query.toLowerCase())) {
-            return questions;
-        } else if (questions.body.toLowerCase().includes(query.toLowerCase())) {
-            return questions;
-    }}).map((question, index) => (
-        <div key={index}>
-            <p>{question.user}</p>
-            <p>{question.title}</p>
-            <p>{question.body}</p>
-        </div>
-        ))
-    } */}
-
-    
     </>
     );
 };
