@@ -20,6 +20,7 @@ function App() {
   const [token, setToken] = useLocalStorageState('plantToken', null)
   const [username, setUsername] = useLocalStorageState('plantUsername', '')
   const [selectedCategory, setSelectedCategory] = useState(null)
+  const [myProfileQuestions, setMyProfileQuestions] = useState(null)
 
   
 
@@ -60,7 +61,10 @@ function App() {
             setSelectedCategory={setSelectedCategory}
             Login={Login}
             isLoggedIn={isLoggedIn}
+            setMyProfileQuestions={setMyProfileQuestions}
+            username={username}
             navigate={navigate}/>
+
           <div>
         </div>
         <Routes>
@@ -124,6 +128,8 @@ function App() {
               token={token}
               navigate={navigate}
               username={username}
+              userIsMe={myProfileQuestions}
+              Answers={Answers}
               />}
               />
           </Routes>

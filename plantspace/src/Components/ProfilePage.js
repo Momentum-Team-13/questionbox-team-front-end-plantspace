@@ -6,25 +6,26 @@ import axios from "axios";
 import Moment from "react-moment";
 import moment from 'moment'
 import { Link, useParams} from 'react-router-dom'
+import IndividualQuestion from "../IndividualQuestion";
 
 
 export default function ProfilePage (props) {
 const [myQuestionList, setMyQuestionList] = useState(null)
-const {isLoggedIn, username, index, token, navigate, questionObject} = props
+const [myAnswerList, setMyAnswerList] = useState(null)
+const {isLoggedIn, username, index, token, navigate, questionObject, userIsMe} = props
 
 
-function justMyQuestions () {
-    let currentUser = {username}
-console.log(currentUser)
-} 
 
 useEffect(() => {
-    axios.get('https://plantspace-fennec-foxes.herokuapp.com/api/questions')
+    axios.get('https://plantspace-fennec-foxes.herokuapp.com/api/myquestions', 
+    {headers: {
+        Authorization: `Token ${token}`,
+        }},)
     .then(res => {
-        let results = (res.data)
-        let myResults = (res.data.filter(justMyQuestions))
-        setMyQuestionList(myResults)
-        console.log(results)
+        let myQuestions = (res.data.questions)
+        console.log(res.data)
+        setMyQuestionList(myQuestions.reverse())
+        console.log(myQuestions)
     })
 }, [] )
 
@@ -32,11 +33,14 @@ useEffect(() => {
 
 return (
         <>
-            <h3>{username}'s Profile</h3>
+        <div className="user-questions">
+            <h3>{username}'s Stats</h3>
+            <h2>My Questions</h2>
             {myQuestionList && myQuestionList.map((questionObject, index) => {
                 return (
-                    <MyQuestions
+                    <IndividualQuestion
                         questionObject={questionObject} 
+                        myQuestionList={myQuestionList}
                         index={index} 
                         Answers={Answers} 
                         username={username}
@@ -44,8 +48,10 @@ return (
                         token={token}
                         navigate={navigate} />
                 )
-                
-            })}    
+        
+            })} 
+        </div>
+        <div className="user-answers"></div>   
         </>
     );
 }

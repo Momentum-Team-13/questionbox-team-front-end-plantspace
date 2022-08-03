@@ -7,7 +7,7 @@ import AskQuestion from "./AskQuestion"
 
 
 export default function NavBar(props) {
-const {navigate, handleLogout, token, login, question, isLoggedIn, setAuth, setSelectedCategory} = props
+const {navigate, handleLogout, token, login, question, isLoggedIn, setAuth, setSelectedCategory, setMyProfileQuestions, userIsMe, username} = props
 const [query, setQuery] = useState("")
 const [category, setCategory] = useState("Home")
 const [profile, setProfile] = useState([])
@@ -16,7 +16,6 @@ const [profile, setProfile] = useState([])
 useEffect ((category) => {
     setCategory(category)
 }, []);
-
 
 
     return (
@@ -29,7 +28,7 @@ useEffect ((category) => {
             
         <nav>
             <div className="categories">
-                <button className="category-buttons" onClick ={() => {navigate('/'); setCategory("Home")}}>All Questions</button>
+                <button className="category-buttons" onClick ={() => {setSelectedCategory(""); navigate('/'); setCategory("Home")}}>All Questions</button>
                 <button className="category-buttons" onClick = {() => {setSelectedCategory("House Plants"); setCategory("House Plants")}}>Houseplants</button>
                 <button className="category-buttons" onClick = {() => {setSelectedCategory("Outdoor Plants"); setCategory("Outdoor Plants")}}>Outdoor Plants</button>
                 <button className="category-buttons" onClick = {() => {setSelectedCategory("Vegetables"); setCategory("Vegetables")}}>Vegetables</button>
@@ -40,8 +39,8 @@ useEffect ((category) => {
                 {isLoggedIn ? (
                     <>
                     <button className="user-buttons" onClick ={() => handleLogout()}>Logout</button>
-                    <button className="user-buttons" onClick={() => navigate("/myprofile")}>My Profile</button>
-                    <button className="user-buttons" onClick ={() => navigate('/askquestion')}>Ask a Question</button>
+                    <button className="user-buttons" onClick={() => {setCategory("My Profile"); navigate("/myprofile")}}>My Profile</button>
+                    <button className="user-buttons" onClick ={() => {navigate('/askquestion'); setCategory("Ask a Question")}}>Ask a Question</button>
                     </>
                 ) : (
                     <>

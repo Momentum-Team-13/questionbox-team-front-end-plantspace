@@ -27,8 +27,8 @@ export default function Questions(props) {
 
     return (
         <>
-            {isLoggedIn && <h2>Welcome, {username}! 🌻</h2>}
-            <h3 className='questions_title'>All Plant Questions :</h3>
+            {isLoggedIn && <h3>Welcome, {username}! 🌻</h3>}
+            <h2 className='questions_title'>All Plant Questions :</h2>
             <div className='scrollbar'>
                 {questionList && questionList.map((questionObject, index) => {
                     return (
