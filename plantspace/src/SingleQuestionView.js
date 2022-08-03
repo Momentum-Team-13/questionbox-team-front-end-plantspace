@@ -75,7 +75,7 @@ export default function SingleQuestionView(props) {
                 </div>}
             {singleQuestionList &&
                 <div className="single_question">
-                    <h2>{singleQuestionList.title}</h2>
+                    <h2 className="single-question-title">{singleQuestionList.title}</h2>
                     <p>Submitted by: {singleQuestionList.user}</p>
                     <h4>{singleQuestionList.body}</h4>
                     <Answers answerList={singleQuestionList.answers}/>

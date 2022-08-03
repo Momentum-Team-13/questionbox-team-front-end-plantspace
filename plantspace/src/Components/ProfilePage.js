@@ -37,38 +37,46 @@ useEffect(() => {
 
 
 return (
-        <>
-            <h3>{username}'s Stats</h3>
-            <h2>My Questions</h2>
-            
-            <div className="question-dropdown">
-                {myQuestionList.length === 0 &&
-                    <button className="question-button" disabled={true}>You have answered no questions yet!</button>}
-                
-                {myQuestionList.length !== 0 && !expandedQuestions && (
-                                    
-                        <button className="question-button" onClick={() =>{ setExpandedQuestions(!expandedQuestions)}}>Hide Questions</button>
-                )}
-                        {myQuestionList && myQuestionList.map((questionObject, index) => {
-                            return (
-                                <IndividualQuestion
-                                    questionObject={questionObject} 
-                                    myQuestionList={myQuestionList}
-                                    index={index} 
-                                    Answers={Answers} 
-                                    username={username}
-                                    isLoggedIn={isLoggedIn}
-                                    token={token}
-                                    navigate={navigate} />
-                                )
-                    
-                            })} 
+    <>
+        <h3>{username}'s Stats</h3>
+    <div className="question-body">
+        <h2>My Questions</h2>
 
-                {myQuestionList.length !== 0 && expandedQuestions && (
-                    <button className="question-button" onClick={() => {setExpandedQuestions(expandedQuestions)}}>See Questions</button>
-                )}
-            </div>
-            {/* <h2>My Answers</h2>
+        <div className="question-dropdown">
+            {myQuestionList.length === 0 && (
+            <button id="center-buttons" className="question-button" disabled={true}>
+            You have answered no questions yet!
+          </button>
+        )}
+        {myQuestionList.length !== 0 && (
+          <button
+            className="question-button"
+            onClick={() => {
+              setExpandedQuestions(!expandedQuestions)
+            }}
+          >
+            {expandedQuestions ? 'Hide Questions' : 'See Questions'}
+          </button>
+        )}
+        {expandedQuestions &&
+          myQuestionList &&
+          myQuestionList.map((questionObject, index) => {
+            return (
+              <IndividualQuestion
+                questionObject={questionObject}
+                myQuestionList={myQuestionList}
+                index={index}
+                Answers={Answers}
+                username={username}
+                isLoggedIn={isLoggedIn}
+                token={token}
+                navigate={navigate}
+              />
+            )
+          })}
+      </div>
+      </div>
+      {/* <h2>My Answers</h2>
             <div className="answer-dropdown">
 
             </div>
@@ -76,6 +84,6 @@ return (
             <h2>MyFavorites</h2>
             </div>
         <div className="user-answers"></div>    */}
-        </>
-    );
+    </>
+  )
 }
