@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Answers from './Answers'
 import IndividualQuestion from './IndividualQuestion';
+import { RotatingLines } from 'react-loader-spinner'
 
 export default function Questions(props) {
     const { isLoggedIn, username, token, navigate, categoryName} = props
@@ -12,7 +13,7 @@ export default function Questions(props) {
 
     useEffect(() => {
         axios.get('https://plantspace-fennec-foxes.herokuapp.com/api/questions')
-            .then(res => {
+        .then(res => {
                 let results = (res.data)
                 // if we have a category name, take the results and filter to keep everything that matches our category name.
                 if (categoryName) {
@@ -29,6 +30,15 @@ export default function Questions(props) {
         <>
             {isLoggedIn && <h3>Welcome, {username}! 🌻</h3>}
             <h2 className='questions_title'>All Plant Questions :</h2>
+            {!questionList &&
+                <div className='loader'><RotatingLines
+                    strokeColor="grey"
+                    strokeWidth="5"
+                    animationDuration="0.75"
+                    width="200"
+                    visible={true} />
+                </div>}
+
             <div className='scrollbar'>
                 {questionList && questionList.map((questionObject, index) => {
                     return (
@@ -38,8 +48,6 @@ export default function Questions(props) {
                         index={index} 
                         Answers={Answers} 
                         username={username}
-                        isLoggedIn={isLoggedIn}
-                        token={token}
                         navigate={navigate}
                         />
                 )
@@ -49,3 +57,4 @@ export default function Questions(props) {
         </>
     )
 }
+
