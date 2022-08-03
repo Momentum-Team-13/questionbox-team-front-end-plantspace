@@ -11,6 +11,7 @@ import ProfilePage from "./Components/ProfilePage"
 import AskQuestion from './Components/AskQuestion'
 import Registration from './Registration';
 import useLocalStorageState from 'use-local-storage-state'
+import EditQuestion from './EditQuestion';
 import { useState } from "react"
 
 
@@ -103,6 +104,16 @@ function App() {
           <Route
             path="/question/:questionId"
             element={<SingleQuestionView 
+              isLoggedIn={isLoggedIn} 
+              token={token} 
+              username={username} 
+              Answers={Answers}  
+              navigate={navigate}     
+              />}
+            />
+          <Route
+            path="/question/edit/:questionId"
+            element={<EditQuestion 
               isLoggedIn={isLoggedIn} 
               token={token} 
               username={username} 
