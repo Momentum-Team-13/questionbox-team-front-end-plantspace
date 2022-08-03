@@ -48,7 +48,7 @@ const handleSubmit = event => {
     <>
     <div className="whole-question">   
         <form id="question-form" onSubmit={handleSubmit}>
-            <label className="question-labels">Title:   
+            <label className="question-labels">Title:
                 <input 
                     id="question-title"
                     type="text" 

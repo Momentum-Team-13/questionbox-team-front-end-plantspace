@@ -224,3 +224,19 @@ p {
   
   
 }
+
+.whole-question {
+  margin: auto;
+}
+
+#question-title {
+  font-size: 30px;
+}
+
+#categories {
+  font-size: 30px;
+}
+
+#question-body {
+  font-size: 30px;
+}
