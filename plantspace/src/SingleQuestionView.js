@@ -6,11 +6,12 @@ import { RotatingLines } from 'react-loader-spinner'
 
 
 export default function SingleQuestionView(props) {
-    const {isLoggedIn, username, token, navigate, answerList } = props
+    const { isLoggedIn, username, token, navigate, answerList } = props
 
     const [singleQuestionList, setSingleQuestionList] = useState(null)
-    const [answer_body, setAnswer_Body] = useState(null) 
-    const[error, setError] = useState(null)
+    const [answer_body, setAnswer_Body] = useState(null)
+    const [error, setError] = useState(null)
+    const [isFavorite, setIsFavorite] = useState(false)
 
     const params = useParams()
     // console.log(`QL: ${params.questionId}`)
@@ -27,7 +28,7 @@ export default function SingleQuestionView(props) {
                 navigate('/login');
                 console.log(res)
             })
-            .catch((error) => {  
+            .catch((error) => {
                 setError(error.message)
             })
     }
@@ -45,21 +46,22 @@ export default function SingleQuestionView(props) {
     function handleAnswerSubmit(e) {
         e.preventDefault()
         setError(null)
-        axios.post(`https://plantspace-fennec-foxes.herokuapp.com/api/questions/${params.questionId}/answer/`, 
-              {answer_body},
-        {
-            headers: { Authorization: `Token ${token}` 
-        },
-        })
-        .then((res) => {
-            alert("Thank you for your answer!")
-            navigate('/');
-            
-        })
-        .catch((error) => {
-            setError(Object.values(error.response.data))
-            console.log(error)
-        })
+        axios.post(`https://plantspace-fennec-foxes.herokuapp.com/api/questions/${params.questionId}/answer/`,
+            { answer_body },
+            {
+                headers: {
+                    Authorization: `Token ${token}`
+                },
+            })
+            .then((res) => {
+                alert("Thank you for your answer!")
+                navigate('/');
+
+            })
+            .catch((error) => {
+                setError(Object.values(error.response.data))
+                console.log(error)
+            })
     }
 
 
@@ -74,27 +76,45 @@ export default function SingleQuestionView(props) {
                     visible={true} />
                 </div>}
             {singleQuestionList &&
-                <div className="single_question">
-                    <h2>{singleQuestionList.title}</h2>
+                <div className="individual_question">
+                    <div className='title-and-star'>
+                        <h2 className='question'>{singleQuestionList.title}</h2>
+                        {isLoggedIn && isFavorite ? (
+                           <>
+                           <div className='click-and-star'>
+                           <p className='click-to-favorite'>Click to Favorite!</p> 
+                           <p onClick={() => setIsFavorite(!isFavorite)} className='favorite-star'>&#9733;</p>
+                           </div>
+                           </>
+                        ) : (
+                            <>
+                            <div className='click-and-star'>
+                            <p className='click-to-favorite'>Click to Favorite!</p>
+                            <p onClick={() => setIsFavorite(!isFavorite)} className='favorite-star'>&#9734;</p>
+                            </div>
+                            </>
+                        )
+                        }
+                    </div>
                     <p>Submitted by: {singleQuestionList.user}</p>
                     <h4>{singleQuestionList.body}</h4>
-                    <Answers answerList={singleQuestionList.answers}/>
+                    <Answers answerList={singleQuestionList.answers} />
                     {username === singleQuestionList.user ? (
-                    <button className='answers-button' onClick={() => handleDelete()}>Delete Question</button>
-                ) : (
-                    ('')
-                )
-                }
+                        <button className='answers-button' onClick={() => handleDelete()}>Delete Question</button>
+                    ) : (
+                        ('')
+                    )
+                    }
                 </div>}
             {isLoggedIn ? (
                 <>
                     <h2>Submit an Answer:</h2>
-                    <form onSubmit={handleAnswerSubmit}>
+                    <form className="answer-form" onSubmit={handleAnswerSubmit}>
                         <textarea
                             rows={10}
                             cols={100}
-                            placeholder="Write Your Answer Here" 
-                            onChange={(e) => setAnswer_Body(e.target.value)}                      
+                            placeholder="Write Your Answer Here"
+                            onChange={(e) => setAnswer_Body(e.target.value)}
                         />
                         <div className="form-submit">
                             <input type="submit" value="Submit Answer" />
