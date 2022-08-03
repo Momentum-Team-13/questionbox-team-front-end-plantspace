@@ -12,7 +12,7 @@ export default function Questions(props) {
 
     useEffect(() => {
         axios.get('https://plantspace-fennec-foxes.herokuapp.com/api/questions')
-            .then(res => {
+        .then(res => {
                 let results = (res.data)
                 setQuestionList(results.reverse())
                 console.log(results)
@@ -34,8 +34,6 @@ export default function Questions(props) {
                         index={index} 
                         Answers={Answers} 
                         username={username}
-                        isLoggedIn={isLoggedIn}
-                        token={token}
                         navigate={navigate}
                         />
                 )
