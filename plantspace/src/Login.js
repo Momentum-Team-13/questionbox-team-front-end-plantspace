@@ -20,6 +20,8 @@ export default function Login({setAuth, isLoggedIn}) {
         .then((res) => {
             const token = res.data.auth_token
             setAuth(username, token)
+            
+
         })
         .catch((error) => {
             setError(error.message)

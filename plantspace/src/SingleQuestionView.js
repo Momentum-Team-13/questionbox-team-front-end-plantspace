@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Answers from './Answers'
 import axios from 'axios';
 import { RotatingLines } from 'react-loader-spinner'
-import useLocalStorageState from 'use-local-storage-state'
+// import useLocalStorageState from 'use-local-storage-state'
 
 
 
@@ -13,10 +13,29 @@ export default function SingleQuestionView(props) {
     const [singleQuestionList, setSingleQuestionList] = useState(null)
     const [answer_body, setAnswer_Body] = useState(null)
     const [error, setError] = useState(null)
-    const [isFavorite, setIsFavorite] = useLocalStorageState('plantFavorite', false)
+    const [isFavorite, setIsFavorite] = useState(false)
 
     const params = useParams()
     // console.log(`QL: ${params.questionId}`)
+
+    useEffect(() => {
+        axios.get(`https://plantspace-fennec-foxes.herokuapp.com/api/questions/${params.questionId}/details`)
+            .then(res => {
+                let results = (res.data)
+                results["starred_by"] = ["dummy007"]
+                setSingleQuestionList(results)
+                // console.log(singleQuestionList)
+                console.log(results)
+                if (results.starred_by.includes("dummy007")) {
+                    setIsFavorite(true)
+                    console.log("yes")
+                }
+                else {
+                    setIsFavorite(false)
+                    console.log("no")
+                }
+            })
+    }, [])
 
     const handleDelete = () => {
         setError(null)
@@ -34,15 +53,6 @@ export default function SingleQuestionView(props) {
             })
     }
 
-    useEffect(() => {
-        axios.get(`https://plantspace-fennec-foxes.herokuapp.com/api/questions/${params.questionId}/details`)
-            .then(res => {
-                let results = (res.data)
-                setSingleQuestionList(results)
-                // console.log(singleQuestionList)
-                // console.log(results)
-            })
-    }, [])
 
     const handleAnswerSubmit = (e) => {
         e.preventDefault()
@@ -76,7 +86,7 @@ export default function SingleQuestionView(props) {
             })
             .then((res) => {
                 console.log("This is a favorite!")
-                setIsFavorite(!isFavorite)
+                setIsFavorite(true)
 
             })
             .catch((error) => {
@@ -92,7 +102,7 @@ export default function SingleQuestionView(props) {
             headers: { Authorization: `Token ${token}` },
         })
             .then((res) => {
-                setIsFavorite(!isFavorite)
+                setIsFavorite(false)
                 console.log("This is no longer a favorite!")
 
             })

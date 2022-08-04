@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import Questions from './Questions'
+// import Questions from './Questions'
 import moment from 'moment';
-import axios from 'axios';
-import EditQuestion from './EditQuestion';
+// import EditQuestion from './EditQuestion';
 
     
 
@@ -11,10 +10,11 @@ export default function Answers(props) {
     const { answerList, user, username, navigate, params } = props
     // console.log(questionList)
 
-    function handleEdit() {
-        console.log(params)
-        navigate(`/question/edit/${params}`)   
-    }
+    // function handleEdit() {
+    //     console.log(params)
+    //     navigate(`/question/edit/${params}`)
+    
+    // }
 
     return (
         <>
@@ -22,9 +22,9 @@ export default function Answers(props) {
                 <button className='answers-button' disabled={true}>Sorry, no answers yet!</button>
             }
 
-            {answerList.length === 0 && user === username && (
-                <button className='answers-button' onClick={handleEdit}>Edit Question</button>
-            )}
+            {/* {answerList.length === 0 && user === username && (
+                <button onClick={handleEdit}>Edit answer</button>
+            )} */}
 
             {answerList.length !== 0 && expanded && (
                 <>

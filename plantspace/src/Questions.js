@@ -44,9 +44,7 @@ export default function Questions(props) {
                     return (
                         <IndividualQuestion 
                         questionObject={questionObject} 
-                        questionList={questionList}
                         index={index} 
-                        Answers={Answers} 
                         username={username}
                         navigate={navigate}
                         />

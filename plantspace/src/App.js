@@ -3,7 +3,6 @@ import NavBar from "./Components/NavBar"
 import Questions from './Questions'
 import SingleQuestionView from './SingleQuestionView';
 import Answers from './Answers';
-import IndividualQuestion from './IndividualQuestion';
 import Login from './Login'
 import axios from 'axios'
 import { Routes, Route, useNavigate, useParams, useRoutes, BrowserRouter as Router} from 'react-router-dom'
@@ -11,7 +10,7 @@ import ProfilePage from "./Components/ProfilePage"
 import AskQuestion from './Components/AskQuestion'
 import Registration from './Registration';
 import useLocalStorageState from 'use-local-storage-state'
-import EditQuestion from './EditQuestion';
+// import EditQuestion from './EditQuestion';
 import { useState } from "react"
 
 
@@ -152,7 +151,7 @@ const App = () =>
               navigate={navigate}     
               />}
             />
-          <Route
+          {/* <Route
             path="/question/edit/:questionId"
             element={<EditQuestion 
               isLoggedIn={isLoggedIn} 
@@ -161,7 +160,7 @@ const App = () =>
               Answers={Answers}  
               navigate={navigate}     
               />}
-            />
+            /> */}
           <Route 
             path="/myprofile"
             element={<ProfilePage
