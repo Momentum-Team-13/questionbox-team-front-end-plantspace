@@ -1,13 +1,12 @@
 import {useState} from "react"
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import axios from "axios"
-import { Link, useParams} from 'react-router-dom'
 
 export default function AskQuestion(props) {
 const [title, setTitle] = useState("")
 const [category, setCategory] = useState(null)
 const [body, setBody] = useState("")
-const [setError] = useState(null)
+const [error, setError] = useState(null)
 
 const {token, user} = props
 

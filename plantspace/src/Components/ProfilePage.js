@@ -116,37 +116,6 @@ return (
             ))}
             </div>
     </div>
-    <div className="favorites-body">
-        <h2>My Favorites</h2>
-        <div className="favorites-dropdown">
-                {myFavoritesList.length === 0 && (
-            <button id="center-buttons" className="question-button" disabled={true}>
-            You have no favorites!
-            </button>
-        )}
-        {myFavoritesList.length !== 0 && (
-            <button id="center-buttons"
-            className="question-button"
-            onClick={() => {
-            setExpandedFavorites(!expandedFavorites)
-            }}
-            >
-            {expandedFavorites ? 'Hide Favorites' : 'See Favorites'}
-            </button>
-        )}
-        {expandedFavorites &&
-            myFavoritesList &&
-            myFavoritesList.map((answer, index) => (
-                <>
-                    <div className='individual-favorite'>
-                        <p key={index}>{answer.answer_body}</p>
-                        <p> Answered by: {answer.user} on on {moment(answer.created_at).format('MM/DD/YY h:mm a')}</p>
-                    </div>
-                </>
-            ))}
-            </div>
-    </div>
-  
     </>
     )
 }

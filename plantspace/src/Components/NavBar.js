@@ -1,13 +1,10 @@
 import { useState} from "react"
 import useLocalStorageState from 'use-local-storage-state'
 
-
-
 export default function NavBar(props) {
 const {navigate, handleLogout, isLoggedIn, setSelectedCategory,} = props
 const [setQuery] = useState("")
 const [category, setCategory] = useLocalStorageState("category", "Home")
-
 
     return (
     <>
