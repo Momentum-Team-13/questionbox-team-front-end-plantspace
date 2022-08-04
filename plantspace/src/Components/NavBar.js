@@ -15,7 +15,7 @@ const [profile, setProfile] = useState([])
 
 useEffect ((category) => {
     setCategory(category)
-}, []);
+}, ["Home"]);
 
 
     return (
@@ -29,9 +29,9 @@ useEffect ((category) => {
         <nav>
             <div className="categories">
                 <button className="category-buttons" onClick ={() => {setSelectedCategory(""); navigate('/'); setCategory("Home")}}>All Questions</button>
-                <button className="category-buttons" onClick = {() => {setSelectedCategory("House Plants"); setCategory("House Plants")}}>Houseplants</button>
-                <button className="category-buttons" onClick = {() => {setSelectedCategory("Outdoor Plants"); setCategory("Outdoor Plants")}}>Outdoor Plants</button>
-                <button className="category-buttons" onClick = {() => {setSelectedCategory("Vegetables"); setCategory("Vegetables")}}>Vegetables</button>
+                <button className="category-buttons" onClick = {() => {setSelectedCategory("House Plants"); navigate("/houseplants"); setCategory("House Plants")}}>Houseplants</button>
+                <button className="category-buttons" onClick = {() => {setSelectedCategory("Outdoor Plants"); navigate("/outdoorplants"); setCategory("Outdoor Plants")}}>Outdoor Plants</button>
+                <button className="category-buttons" onClick = {() => {setSelectedCategory("Vegetables"); navigate("/vegetables"); setCategory("Vegetables")}}>Vegetables</button>
             </div>
 
             <div className="header-buttons">

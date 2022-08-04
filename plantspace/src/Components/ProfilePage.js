@@ -6,17 +6,18 @@ import Moment from "react-moment";
 import moment from 'moment'
 import { Link, useParams} from 'react-router-dom'
 import IndividualQuestion from "../IndividualQuestion";
+import Questions from "../Questions";
 
 
 export default function ProfilePage (props) {
 const [myQuestionList, setMyQuestionList] = useState([])
-const [myAnswerList, setMyAnswerList] = useState(null)
+const [myAnswerList, setMyAnswerList] = useState([])
 
 const [expandedQuestions, setExpandedQuestions] = useState(false)
 const [expandedAnswers, setExpandedAnswers] = useState(false)
 const [expandedFavorites, setExpandedFavorites] = useState(false)
 
-const {isLoggedIn, username, index, token, navigate, questionObject, userIsMe, answerList} = props
+const {isLoggedIn, username, index, token, user, navigate, questionObject, answerList} = props
 
 
 
@@ -31,6 +32,11 @@ useEffect(() => {
         setMyQuestionList(myQuestions.reverse())
         console.log(myQuestions)
         console.log(myQuestionList)
+
+        let myAnswers = (res.data.answers)
+        console.log(myAnswers)
+        console.log(myAnswerList)
+        setMyAnswerList(myAnswers.reverse())
     })
 }, [] )
 
@@ -39,30 +45,31 @@ useEffect(() => {
 return (
     <>
         <h3>{username}'s Stats</h3>
+
     <div className="question-body">
         <h2>My Questions</h2>
 
         <div className="question-dropdown">
             {myQuestionList.length === 0 && (
             <button id="center-buttons" className="question-button" disabled={true}>
-            You have answered no questions yet!
-          </button>
+            You have asked no questions yet!
+            </button>
         )}
         {myQuestionList.length !== 0 && (
-          <button
+            <button id="center-buttons"
             className="question-button"
             onClick={() => {
-              setExpandedQuestions(!expandedQuestions)
+            setExpandedQuestions(!expandedQuestions)
             }}
-          >
+            >
             {expandedQuestions ? 'Hide Questions' : 'See Questions'}
-          </button>
+            </button>
         )}
         {expandedQuestions &&
-          myQuestionList &&
-          myQuestionList.map((questionObject, index) => {
+            myQuestionList &&
+            myQuestionList.map((questionObject, index) => {
             return (
-              <IndividualQuestion
+                <IndividualQuestion
                 questionObject={questionObject}
                 myQuestionList={myQuestionList}
                 index={index}
@@ -71,19 +78,45 @@ return (
                 isLoggedIn={isLoggedIn}
                 token={token}
                 navigate={navigate}
-              />
-            )
-          })}
-      </div>
-      </div>
-      {/* <h2>My Answers</h2>
-            <div className="answer-dropdown">
+                />
+                )
+            })}
+        </div>
+        </div>
 
+
+        <h2>My Answers</h2>
+            <div className="answer-dropdown">
+                {myAnswerList.length === 0 && (
+            <button id="center-buttons" className="question-button" disabled={true}>
+            You have no answers!
+            </button>
+        )}
+        {myAnswerList.length !== 0 && (
+            <button id="center-buttons"
+            className="question-button"
+            onClick={() => {
+            setExpandedAnswers(!expandedAnswers)
+            }}
+            >
+            {expandedAnswers ? 'Hide Answers' : 'See Answers'}
+            </button>
+        )}
+        {expandedAnswers &&
+            myAnswerList &&
+            myAnswerList.map((answer, index) => (
+                <>
+                    <div className='individual-answer'>
+                        <p key={index}>{answer.answer_body}</p>
+                        <p> Answered by: {answer.user} on on {moment(answer.created_at).format('MM/DD/YY h:mm a')}</p>
+                    </div>
+                </>
+            ))}
             </div>
             <div className="favorite-dropdown">
-            <h2>MyFavorites</h2>
+            <h2>My Favorites</h2>
             </div>
-        <div className="user-answers"></div>    */}
+        <div className="user-answers"></div>   
     </>
-  )
+    )
 }
