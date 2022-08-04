@@ -48,14 +48,14 @@ const handleSubmit = event => {
     <>
     <div className="whole-question">   
         <form id="question-form" onSubmit={handleSubmit}>
-            <label className="question-labels">Title:   
+            <label className="question-labels"><h3>Title:</h3>
                 <input 
                     id="question-title"
                     type="text" 
                     value={title}
                     onChange={(e) => setTitle(e.target.value)} />
             </label> <br /> <br />
-            <label className="question-labels">Category:
+            <label className="question-labels"><h3>Category:</h3>
             <select value={category} onChange={handleChange} className="category" id="categories">
                 <option value="">Please Select a Category</option>
                 <option value="1">House Plants</option>
@@ -63,7 +63,7 @@ const handleSubmit = event => {
                 <option value="3">Vegetables</option>
             </select>
             </label> <br /> <br />
-            <label className="question-labels">Question:
+            <label className="question-labels"><h3>Question:</h3>
                 <textarea
                     id="question-body"
                     name="question-area"
@@ -71,7 +71,9 @@ const handleSubmit = event => {
                     value={body}
                     onChange={(e) => setBody(e.target.value)} />
             </label>
-            <input type="submit" onClick ={handleSubmit}/>
+        <div className="form-and-submit">
+            <input type="submit" className="question-button" onClick ={handleSubmit}/>
+        </div>
         </form>
     </div>
     </>
