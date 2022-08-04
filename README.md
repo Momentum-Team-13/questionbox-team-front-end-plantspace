@@ -1,14 +1,14 @@
 # PlantSpace Readme
 
-# CONTRIBUTORS:
+## CONTRIBUTORS:
 
 This project was developed by backend developers Amanda McMullin and Yuriy Golota and frontend developers Susan Brown and Chloe Mintel.
 
-# DESCRIPTION:
+## DESCRIPTION:
 
 Plantspace is a group project based on Momentum's Phase 3 end project called Questionbox, similar to StackOverflow. Plantspace is a forum for all things green, and allows users to register and log in - but anyone may view questions and answers even without a profile. Once logged in, users may write questions and answer them. A user may also delete their own questions if desired.
 
-# INSTALLATION:
+## INSTALLATION:
 
 - To install this project, begin by cloning this repo in your terminal by clicking the green clone or download button at the top right of the page and copying the URL.
 
