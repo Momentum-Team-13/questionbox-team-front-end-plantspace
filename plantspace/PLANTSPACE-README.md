@@ -25,3 +25,9 @@ Plantspace is a group project based on Momentum's Phase 3 end project called Que
 - Finally, type `npm start` to run the app locally in the browser!
 
 - To look at the code, open up the project in VS code.
+
+# PRODUCTION APPLICATION
+
+You can reach our deployed application by accessing the link below: 
+
+        https://super-semolina-259059.netlify.app/myprofile
