@@ -30,4 +30,4 @@ Plantspace is a group project based on Momentum's Phase 3 end project called Que
 
 You can reach our deployed application by accessing the link below: 
 
-        https://super-semolina-259059.netlify.app/myprofile
+        https://super-semolina-259059.netlify.app
