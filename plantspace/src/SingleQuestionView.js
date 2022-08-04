@@ -22,11 +22,10 @@ export default function SingleQuestionView(props) {
         axios.get(`https://plantspace-fennec-foxes.herokuapp.com/api/questions/${params.questionId}/details`)
             .then(res => {
                 let results = (res.data)
-                results["starred_by"] = ["dummy007"]
                 setSingleQuestionList(results)
                 // console.log(singleQuestionList)
                 console.log(results)
-                if (results.starred_by.includes("dummy007")) {
+                if (results.starred_by.includes(username)) {
                     setIsFavorite(true)
                     console.log("yes")
                 }
@@ -45,7 +44,7 @@ export default function SingleQuestionView(props) {
                 headers: { Authorization: `Token ${token}` },
             })
             .then((res) => {
-                navigate('/login');
+                navigate('/');
                 console.log(res)
             })
             .catch((error) => {
