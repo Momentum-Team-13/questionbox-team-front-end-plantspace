@@ -6,7 +6,7 @@ import Answers from './Answers';
 import IndividualQuestion from './IndividualQuestion';
 import Login from './Login'
 import axios from 'axios'
-import { Routes, Route, useNavigate, useParams} from 'react-router-dom'
+import { Routes, Route, useNavigate, useParams, useRoutes, BrowserRouter as Router} from 'react-router-dom'
 import ProfilePage from "./Components/ProfilePage"
 import AskQuestion from './Components/AskQuestion'
 import Registration from './Registration';
@@ -22,8 +22,20 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState(null)
   const [myProfileQuestions, setMyProfileQuestions] = useState(null)
 
-  
+const App = () =>
+  useRoutes([
+    { path: "/", element: <NavBar />},
+    { path: "/houseplants", element: <Questions />},
+    { path: "/outdoorplants", element: <Questions />},
+    { path: "/vegetables", element: <Questions />},
 
+  ])
+
+  const AppWrapper = () => (
+    <Router>
+      <App />
+    </Router>
+  );
 
   const setAuth = (username, token) => {
     setToken(token)
@@ -64,7 +76,6 @@ function App() {
             setMyProfileQuestions={setMyProfileQuestions}
             username={username}
             navigate={navigate}/>
-
           <div>
         </div>
         <Routes>
@@ -101,6 +112,36 @@ function App() {
               categoryName={selectedCategory}
               />}
             />
+          <Route
+          path="/outdoorplants"
+          element={<Questions 
+            isLoggedIn={isLoggedIn} 
+            token={token} 
+            username={username}
+            navigate={navigate}
+            categoryName={selectedCategory}
+            />}
+          />
+          <Route
+          path="/houseplants"
+          element={<Questions 
+            isLoggedIn={isLoggedIn} 
+            token={token} 
+            username={username}
+            navigate={navigate}
+            categoryName={selectedCategory}
+            />}
+          />
+          <Route
+          path="/vegetables"
+          element={<Questions 
+            isLoggedIn={isLoggedIn} 
+            token={token} 
+            username={username}
+            navigate={navigate}
+            categoryName={selectedCategory}
+            />}
+          />
           <Route
             path="/question/:questionId"
             element={<SingleQuestionView 

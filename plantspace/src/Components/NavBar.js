@@ -3,19 +3,15 @@ import { Navigate } from "react-router-dom"
 import ProfilePage from "./ProfilePage"
 import Questions from "../Questions"
 import AskQuestion from "./AskQuestion"
+import useLocalStorageState from 'use-local-storage-state'
 
 
 
 export default function NavBar(props) {
 const {navigate, handleLogout, token, login, question, isLoggedIn, setAuth, setSelectedCategory, setMyProfileQuestions, userIsMe, username} = props
 const [query, setQuery] = useState("")
-const [category, setCategory] = useState("Home")
+const [category, setCategory] = useLocalStorageState("category", "Home")
 const [profile, setProfile] = useState([])
-
-
-useEffect ((category) => {
-    setCategory(category)
-}, []);
 
 
     return (
@@ -29,9 +25,9 @@ useEffect ((category) => {
         <nav>
             <div className="categories">
                 <button className="category-buttons" onClick ={() => {setSelectedCategory(""); navigate('/'); setCategory("Home")}}>All Questions</button>
-                <button className="category-buttons" onClick = {() => {setSelectedCategory("House Plants"); setCategory("House Plants")}}>Houseplants</button>
-                <button className="category-buttons" onClick = {() => {setSelectedCategory("Outdoor Plants"); setCategory("Outdoor Plants")}}>Outdoor Plants</button>
-                <button className="category-buttons" onClick = {() => {setSelectedCategory("Vegetables"); setCategory("Vegetables")}}>Vegetables</button>
+                <button className="category-buttons" onClick = {() => {setSelectedCategory("House Plants"); navigate("/houseplants"); setCategory("House Plants")}}>Houseplants</button>
+                <button className="category-buttons" onClick = {() => {setSelectedCategory("Outdoor Plants"); navigate("/outdoorplants"); setCategory("Outdoor Plants")}}>Outdoor Plants</button>
+                <button className="category-buttons" onClick = {() => {setSelectedCategory("Vegetables"); navigate("/vegetables"); setCategory("Vegetables")}}>Vegetables</button>
             </div>
 
             <div className="header-buttons">
