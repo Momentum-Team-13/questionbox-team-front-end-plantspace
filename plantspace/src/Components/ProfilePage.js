@@ -1,23 +1,20 @@
 import { useState, useEffect } from "react"
 import Answers from '../Answers'
-import { Navigate } from "react-router-dom"
 import axios from "axios";
-import Moment from "react-moment";
 import moment from 'moment'
-import { Link, useParams} from 'react-router-dom'
 import IndividualQuestion from "../IndividualQuestion";
-import Questions from "../Questions";
 
 
 export default function ProfilePage (props) {
 const [myQuestionList, setMyQuestionList] = useState([])
 const [myAnswerList, setMyAnswerList] = useState([])
+const [myFavoritesList, setMyFavoritesList] = useState([])
 
 const [expandedQuestions, setExpandedQuestions] = useState(false)
 const [expandedAnswers, setExpandedAnswers] = useState(false)
 const [expandedFavorites, setExpandedFavorites] = useState(false)
 
-const {isLoggedIn, username, index, token, user, navigate, questionObject, answerList} = props
+const {isLoggedIn, username, token, navigate} = props
 
 
 
@@ -37,6 +34,11 @@ useEffect(() => {
         console.log(myAnswers)
         console.log(myAnswerList)
         setMyAnswerList(myAnswers.reverse())
+
+        let myFavorites = (res.data.starred_by)
+        console.log(myFavorites)
+        console.log(myFavoritesList)
+        setMyFavoritesList(myFavorites.reverse())
     })
 }, [] )
 
@@ -114,10 +116,6 @@ return (
             ))}
             </div>
     </div>
-            <div className="favorite-dropdown">
-            <h2>My Favorites</h2>
-            </div>
-        <div className="user-answers"></div>   
     </>
     )
 }

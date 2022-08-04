@@ -1,18 +1,10 @@
-import { useState, useEffect } from "react"
-import { Navigate } from "react-router-dom"
-import ProfilePage from "./ProfilePage"
-import Questions from "../Questions"
-import AskQuestion from "./AskQuestion"
+import { useState} from "react"
 import useLocalStorageState from 'use-local-storage-state'
 
-
-
 export default function NavBar(props) {
-const {navigate, handleLogout, token, login, question, isLoggedIn, setAuth, setSelectedCategory, setMyProfileQuestions, userIsMe, username} = props
-const [query, setQuery] = useState("")
+const {navigate, handleLogout, isLoggedIn, setSelectedCategory,} = props
+const [setQuery] = useState("")
 const [category, setCategory] = useLocalStorageState("category", "Home")
-const [profile, setProfile] = useState([])
-
 
     return (
     <>
