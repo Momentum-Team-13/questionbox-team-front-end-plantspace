@@ -84,7 +84,7 @@ return (
         </div>
         </div>
 
-
+    <div className="answer-body">
         <h2>My Answers</h2>
             <div className="answer-dropdown">
                 {myAnswerList.length === 0 && (
@@ -113,6 +113,7 @@ return (
                 </>
             ))}
             </div>
+    </div>
             <div className="favorite-dropdown">
             <h2>My Favorites</h2>
             </div>
