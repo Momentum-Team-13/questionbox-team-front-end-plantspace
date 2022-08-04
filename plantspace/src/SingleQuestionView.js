@@ -156,7 +156,7 @@ export default function SingleQuestionView(props) {
                             onChange={(e) => setAnswer_Body(e.target.value)}
                         />
                         <div className="form-submit">
-                            <input type="submit" value="Submit Answer" />
+                            <input className='answers-button' type="submit" value="Submit Answer" />
                         </div>
                     </form>
                 </>
