@@ -13,10 +13,7 @@ export default function Answers(props) {
 
     function handleEdit() {
         console.log(params)
-        navigate(`/question/edit/${params}`)
-        
-       
-        
+        navigate(`/question/edit/${params}`)   
     }
 
     return (
@@ -26,7 +23,7 @@ export default function Answers(props) {
             }
 
             {answerList.length === 0 && user === username && (
-                <button onClick={handleEdit}>Edit answer</button>
+                <button className='answers-button' onClick={handleEdit}>Edit Question</button>
             )}
 
             {answerList.length !== 0 && expanded && (

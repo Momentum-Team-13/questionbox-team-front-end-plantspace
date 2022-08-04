@@ -41,6 +41,7 @@ useEffect ((category) => {
                     <button className="user-buttons" onClick ={() => handleLogout()}>Logout</button>
                     <button className="user-buttons" onClick={() => {setCategory("My Profile"); navigate("/myprofile")}}>My Profile</button>
                     <button className="user-buttons" onClick ={() => {navigate('/askquestion'); setCategory("Ask a Question")}}>Ask a Question</button>
+
                     </>
                 ) : (
                     <>

@@ -114,6 +114,12 @@ a {
 
  .answer-form {
    text-align: center;
+ }
+
  .loader {
    padding-left: 400px;
+ }
+
+ .edit-question-form {
+   text-align: center;
  }

@@ -1,23 +1,24 @@
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, } from 'react-router-dom'
 import React, { useEffect, useState } from 'react';
 import Answers from './Answers'
 import axios from 'axios';
 import { RotatingLines } from 'react-loader-spinner'
+import useLocalStorageState from 'use-local-storage-state'
+
 
 
 export default function SingleQuestionView(props) {
-    const { isLoggedIn, username, token, navigate, answerList } = props
+    const { isLoggedIn, username, token, navigate, user } = props
 
     const [singleQuestionList, setSingleQuestionList] = useState(null)
     const [answer_body, setAnswer_Body] = useState(null)
     const [error, setError] = useState(null)
-    const [isFavorite, setIsFavorite] = useState(false)
+    const [isFavorite, setIsFavorite] = useLocalStorageState('plantFavorite', false)
 
     const params = useParams()
     // console.log(`QL: ${params.questionId}`)
 
     const handleDelete = () => {
-        // event.preventDefault()
         setError(null)
 
         axios.delete(`https://plantspace-fennec-foxes.herokuapp.com/api/questions/${params.questionId}/trash`,
@@ -39,11 +40,11 @@ export default function SingleQuestionView(props) {
                 let results = (res.data)
                 setSingleQuestionList(results)
                 // console.log(singleQuestionList)
-                console.log(results)
+                // console.log(results)
             })
     }, [])
 
-    function handleAnswerSubmit(e) {
+    const handleAnswerSubmit = (e) => {
         e.preventDefault()
         setError(null)
         axios.post(`https://plantspace-fennec-foxes.herokuapp.com/api/questions/${params.questionId}/answer/`,
@@ -64,9 +65,47 @@ export default function SingleQuestionView(props) {
             })
     }
 
+    const handleFavorite = () => {
+        setError(null)
+        axios.post(`https://plantspace-fennec-foxes.herokuapp.com/api/questions/${params.questionId}/star/`,
+            {},
+            {
+                headers: {
+                    Authorization: `Token ${token}`
+                },
+            })
+            .then((res) => {
+                console.log("This is a favorite!")
+                setIsFavorite(!isFavorite)
+
+            })
+            .catch((error) => {
+                setError(Object.values(error.response.data))
+                console.log(error)
+            })
+    }
+
+    const handleUnfavorite = () => {
+        setError(null)
+        axios.delete(`https://plantspace-fennec-foxes.herokuapp.com/api/questions/${params.questionId}/star/`,
+        {
+            headers: { Authorization: `Token ${token}` },
+        })
+            .then((res) => {
+                setIsFavorite(!isFavorite)
+                console.log("This is no longer a favorite!")
+
+            })
+            .catch((error) => {
+                setError(Object.values(error.response.data))
+                console.log(error)
+            })
+    }
+
 
     return (
         <>
+        {error && <div>{error}</div>}
             {!singleQuestionList &&
                 <div className='loader'><RotatingLines
                     strokeColor="grey"
@@ -83,14 +122,14 @@ export default function SingleQuestionView(props) {
                            <>
                            <div className='click-and-star'>
                            <p className='click-to-favorite'>Click to Favorite!</p> 
-                           <p onClick={() => setIsFavorite(!isFavorite)} className='favorite-star'>&#9733;</p>
+                           <p onClick={() => {handleUnfavorite()}} className='favorite-star'>&#9733;</p>
                            </div>
                            </>
                         ) : (
                             <>
                             <div className='click-and-star'>
                             <p className='click-to-favorite'>Click to Favorite!</p>
-                            <p onClick={() => setIsFavorite(!isFavorite)} className='favorite-star'>&#9734;</p>
+                            <p onClick={() => {handleFavorite()}} className='favorite-star'>&#9734;</p>
                             </div>
                             </>
                         )
@@ -98,7 +137,7 @@ export default function SingleQuestionView(props) {
                     </div>
                     <p>Submitted by: {singleQuestionList.user}</p>
                     <h4>{singleQuestionList.body}</h4>
-                    <Answers answerList={singleQuestionList.answers} />
+                    <Answers answerList={singleQuestionList.answers} username={username} user={user} />
                     {username === singleQuestionList.user ? (
                         <button className='answers-button' onClick={() => handleDelete()}>Delete Question</button>
                     ) : (
