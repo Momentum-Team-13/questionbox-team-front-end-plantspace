@@ -7,11 +7,9 @@ export default function AskQuestion(props) {
 const [title, setTitle] = useState("")
 const [category, setCategory] = useState(null)
 const [body, setBody] = useState("")
-const [isShown, setIsShown]= useState(false)
-const [error, setError] = useState(null)
-const [question, setQuestion] = useState(null)
+const [setError] = useState(null)
 
-const {isLoggedIn, token, user} = props
+const {token, user} = props
 
 const navigate = useNavigate()
 
