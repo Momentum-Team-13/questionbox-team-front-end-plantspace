@@ -4,6 +4,7 @@
   border-radius: 10px;
   background-color: white;
   margin-bottom: 10px;
+  padding: 10px;
   margin-left: auto;
   margin-right: auto;
   width: 80vw;
@@ -99,6 +100,7 @@ a {
  .title-and-star {
    display: flex;
    justify-content: space-between;
+
  }
 
  .click-to-favorite {
@@ -122,4 +124,8 @@ a {
 
  .edit-question-form {
    text-align: center;
+ }
+
+ .question {
+  color: rgb(75, 125, 75);
  }
