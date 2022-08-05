@@ -19,7 +19,7 @@ export default function Questions(props) {
                 if (categoryName) {
                     results = results.filter((question) => question.category_name === categoryName) 
                 }
-                setQuestionList(results.reverse())
+                setQuestionList(results)
                 console.log(results)
             })
     }, [categoryName])
