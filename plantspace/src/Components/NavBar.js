@@ -16,7 +16,7 @@ const [category, setCategory] = useLocalStorageState("category", "Home")
             
         <nav>
             <div className="categories">
-                <button className="category-buttons" onClick ={() => {setSelectedCategory("Home"); navigate('/'); setCategory("Home")}}>All Questions</button>
+                <button className="category-buttons" onClick ={() => {setSelectedCategory(""); navigate('/'); setCategory("Home")}}>All Questions</button>
                 <button className="category-buttons" onClick = {() => {setSelectedCategory("House Plants"); navigate("/houseplants"); setCategory("House Plants")}}>Houseplants</button>
                 <button className="category-buttons" onClick = {() => {setSelectedCategory("Outdoor Plants"); navigate("/outdoorplants"); setCategory("Outdoor Plants")}}>Outdoor Plants</button>
                 <button className="category-buttons" onClick = {() => {setSelectedCategory("Vegetables"); navigate("/vegetables"); setCategory("Vegetables")}}>Vegetables</button>
