@@ -2,17 +2,14 @@ import Moment from 'react-moment';
 import moment from 'moment'
 import { Link, useParams } from 'react-router-dom'
 import React, { useState } from 'react';
-import axios from 'axios';
-import { Navigate } from 'react-router-dom'
 import Answers from './Answers';
 
 
 export default function IndividualQuestion(props) {
     const { questionObject, index, username, navigate} = props
-    const [error, setError] = useState(null)
 
 
-    const params = useParams()
+    // const params = useParams()
     // console.log(`QL: ${params.questionId}`)
 
 
@@ -33,6 +30,3 @@ export default function IndividualQuestion(props) {
         </>
     )
 }
-
-// if they click the star, axios post request to favorite endpoint. in the .then setFavorite to true?
-// then an {favorite=true && show filled in star, otherwise show empty star}

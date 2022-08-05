@@ -16,7 +16,7 @@ export default function EditQuestion() {
     }
 
     useEffect(() => {
-        
+
         axios.get(`https://plantspace-fennec-foxes.herokuapp.com/api/questions/${params.questionId}/details`)
             .then(res => {
                 let results = (res.data)
@@ -28,17 +28,19 @@ export default function EditQuestion() {
 
     return (
         <>
-       <form>
-            <textarea 
-                defaultValue={question}
-                className="edit_question"
-                rows={10}
-                cols={50}
-                onChange={(e) => setEditedQuestion(e.target.value)}
+            <div className="edit-question-form">
+                <form>
+                    <textarea
+                        defaultValue={question}
+                        className="edit_question"
+                        rows={10}
+                        cols={50}
+                        onChange={(e) => setEditedQuestion(e.target.value)}
                     ></textarea>
-       </form>
-            
-            <button onClick={handleEditSubmit} className="answers-button">Submit Edited Question</button>
+                </form>
+
+                <button onClick={handleEditSubmit} className="answers-button">Submit Edited Question</button>
+        </div>
             </>
-            )
+    )
 }

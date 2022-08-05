@@ -89,8 +89,37 @@ a {
    margin: 5px;
  }
 
+ .favorite-star {
+   font-size: 40px;
+   padding-right: 150px;
+   color:rgb(225, 216, 46);
+   margin-top: 0;
+ }
+
+ .title-and-star {
+   display: flex;
+   justify-content: space-between;
+ }
+
+ .click-to-favorite {
+   color: black;
+   font-size: 40px;
+   margin-top: 0;
+ }
+
+ .click-and-star {
+   display: flex;
+   margin-top: 45px;
+ }
+
+ .answer-form {
+   text-align: center;
+ }
+
  .loader {
    padding-left: 400px;
  }
 
- 
+ .edit-question-form {
+   text-align: center;
+ }

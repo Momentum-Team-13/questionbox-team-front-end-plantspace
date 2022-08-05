@@ -5,7 +5,7 @@ import IndividualQuestion from './IndividualQuestion';
 import { RotatingLines } from 'react-loader-spinner'
 
 export default function Questions(props) {
-    const { isLoggedIn, username, token, navigate, categoryName} = props
+    const { isLoggedIn, username, navigate, categoryName} = props
 
     const [questionList, setQuestionList] = useState(null)
 
@@ -44,9 +44,7 @@ export default function Questions(props) {
                     return (
                         <IndividualQuestion 
                         questionObject={questionObject} 
-                        questionList={questionList}
                         index={index} 
-                        Answers={Answers} 
                         username={username}
                         navigate={navigate}
                         />
