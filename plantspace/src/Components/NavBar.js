@@ -7,24 +7,6 @@ const {navigate, handleLogout, isLoggedIn, setSelectedCategory, query, setQuery}
 const [searchResults, setSearchResults] = useState('')
 const [category, setCategory] = useLocalStorageState("category", "Home")
 
-// function runSearch() {
-//     console.log(query)
-//     axios.get('https://plantspace-fennec-foxes.herokuapp.com/api/questions')
-//     .then(res => {
-//             let results = (res.data)
-//             console.log(results)
-//             results.filter((resultObject) => {
-//                 console.log(Object.values(resultObject))
-//                 for (let element of Object.values(resultObject)) {
-//                     if (typeof element === 'string' && element.toLowerCase().includes(query)) {
-//                         console.log(resultObject)
-//                         setSearchResults(resultObject)
-//                     }
-//                 } 
-//             }
-//             )
-//         })
-// }
 
     return (
     <>
