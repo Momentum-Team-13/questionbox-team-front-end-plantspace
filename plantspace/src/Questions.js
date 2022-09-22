@@ -5,7 +5,7 @@ import IndividualQuestion from './IndividualQuestion';
 import { RotatingLines } from 'react-loader-spinner'
 
 export default function Questions(props) {
-    const { isLoggedIn, username, navigate, categoryName} = props
+    const { isLoggedIn, username, navigate, categoryName, searchResults, query} = props
 
     const [questionList, setQuestionList] = useState(null)
 
@@ -19,10 +19,22 @@ export default function Questions(props) {
                 if (categoryName) {
                     results = results.filter((question) => question.category_name === categoryName) 
                 }
+                if (query) {
+                    console.log(query)
+                    results = results.filter((resultObject) => {
+                        console.log(Object.values(resultObject))
+                        for (let element of Object.values(resultObject)) {
+                            if (typeof element === 'string' && element.toLowerCase().includes(query)) {
+                                return resultObject
+                            }
+                        } 
+                    }
+                    )
+                }
                 setQuestionList(results)
                 console.log(results)
             })
-    }, [categoryName])
+    }, [categoryName, query])
 
 
 

@@ -1,10 +1,30 @@
-import { useState} from "react"
+import { useState, useEffect} from "react"
+import axios from 'axios';
 import useLocalStorageState from 'use-local-storage-state'
 
 export default function NavBar(props) {
-const {navigate, handleLogout, isLoggedIn, setSelectedCategory,} = props
-const [setQuery] = useState("")
+const {navigate, handleLogout, isLoggedIn, setSelectedCategory, query, setQuery} = props
+const [searchResults, setSearchResults] = useState('')
 const [category, setCategory] = useLocalStorageState("category", "Home")
+
+// function runSearch() {
+//     console.log(query)
+//     axios.get('https://plantspace-fennec-foxes.herokuapp.com/api/questions')
+//     .then(res => {
+//             let results = (res.data)
+//             console.log(results)
+//             results.filter((resultObject) => {
+//                 console.log(Object.values(resultObject))
+//                 for (let element of Object.values(resultObject)) {
+//                     if (typeof element === 'string' && element.toLowerCase().includes(query)) {
+//                         console.log(resultObject)
+//                         setSearchResults(resultObject)
+//                     }
+//                 } 
+//             }
+//             )
+//         })
+// }
 
     return (
     <>
@@ -23,7 +43,9 @@ const [category, setCategory] = useLocalStorageState("category", "Home")
             </div>
 
             <div className="header-buttons">
-                <input className= "search-bar" placeholder="Search all posts" onChange={event => setQuery(event.target.value)}/>
+                <input className= "search-bar" placeholder="Search all posts" onChange={(e) => setQuery(e.target.value.toLowerCase())}/>
+                {/* <button className="user-buttons" onClick ={() => { navigate("/searchresults")}}>Search</button> */}
+
                 {isLoggedIn ? (
                     <>
                     <button className="user-buttons" onClick ={() => handleLogout()}>Logout</button>
