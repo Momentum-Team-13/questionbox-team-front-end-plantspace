@@ -5,7 +5,7 @@ import SingleQuestionView from './SingleQuestionView';
 import Answers from './Answers';
 import Login from './Login'
 import axios from 'axios'
-import { Routes, Route, useNavigate, useParams, useRoutes, BrowserRouter as Router} from 'react-router-dom'
+import { Routes, Route, useNavigate, useParams, useRoutes, BrowserRouter as Router } from 'react-router-dom'
 import ProfilePage from "./Components/ProfilePage"
 import AskQuestion from './Components/AskQuestion'
 import Registration from './Registration';
@@ -20,21 +20,8 @@ function App() {
   const [username, setUsername] = useLocalStorageState('plantUsername', '')
   const [selectedCategory, setSelectedCategory] = useState(null)
   const [myProfileQuestions, setMyProfileQuestions] = useState(null)
+  const [query, setQuery] = useState(null)
 
-const App = () =>
-  useRoutes([
-    { path: "/", element: <NavBar />},
-    { path: "/houseplants", element: <Questions />},
-    { path: "/outdoorplants", element: <Questions />},
-    { path: "/vegetables", element: <Questions />},
-
-  ])
-
-  const AppWrapper = () => (
-    <Router>
-      <App />
-    </Router>
-  );
 
   const setAuth = (username, token) => {
     setToken(token)
@@ -61,96 +48,102 @@ const App = () =>
 
 
   const isLoggedIn = username && token
- 
+
   return (
     <>
-        <div className="App">
-          <NavBar 
-            setAuth={setAuth}
-            token={token}
-            handleLogout={handleLogout}
-            setSelectedCategory={setSelectedCategory}
-            Login={Login}
-            isLoggedIn={isLoggedIn}
-            setMyProfileQuestions={setMyProfileQuestions}
-            username={username}
-            navigate={navigate}/>
-          <div>
+      <div className="App">
+        <NavBar
+          setAuth={setAuth}
+          token={token}
+          handleLogout={handleLogout}
+          setSelectedCategory={setSelectedCategory}
+          Login={Login}
+          isLoggedIn={isLoggedIn}
+          setMyProfileQuestions={setMyProfileQuestions}
+          username={username}
+          navigate={navigate}
+          query={query}
+          setQuery={setQuery} 
+          />
+
+        <div>
         </div>
         <Routes>
-          <Route 
+          <Route
             path="/askquestion"
-            element={<AskQuestion 
-              isLoggedIn={isLoggedIn} 
-              user={username} 
+            element={<AskQuestion
+              isLoggedIn={isLoggedIn}
+              user={username}
               navigate={navigate}
-              token={token}/>}
+              token={token} />}
           />
-          <Route 
+          <Route
             path="/login"
-            element={<Login 
-              setAuth={setAuth} 
-              isLoggedIn={isLoggedIn} 
+            element={<Login
+              setAuth={setAuth}
+              isLoggedIn={isLoggedIn}
               navigate={navigate}
-              />}
-            />
+            />}
+          />
           <Route
             path="/register"
             element={<Registration
               navigate={navigate}
               setAuth={setAuth}
-              />}
-            />
+            />}
+          />
           <Route
             path="/"
-            element={<Questions 
-              isLoggedIn={isLoggedIn} 
-              token={token} 
+            element={<Questions
+              isLoggedIn={isLoggedIn}
+              token={token}
               username={username}
               navigate={navigate}
               categoryName={selectedCategory}
-              />}
-            />
-          <Route
-          path="/outdoorplants"
-          element={<Questions 
-            isLoggedIn={isLoggedIn} 
-            token={token} 
-            username={username}
-            navigate={navigate}
-            categoryName={selectedCategory}
+              query={query}
             />}
           />
           <Route
-          path="/houseplants"
-          element={<Questions 
-            isLoggedIn={isLoggedIn} 
-            token={token} 
-            username={username}
-            navigate={navigate}
-            categoryName={selectedCategory}
+            path="/outdoorplants"
+            element={<Questions
+              isLoggedIn={isLoggedIn}
+              token={token}
+              username={username}
+              navigate={navigate}
+              categoryName={selectedCategory}
             />}
           />
           <Route
-          path="/vegetables"
-          element={<Questions 
-            isLoggedIn={isLoggedIn} 
-            token={token} 
-            username={username}
-            navigate={navigate}
-            categoryName={selectedCategory}
+            path="/houseplants"
+            element={<Questions
+              isLoggedIn={isLoggedIn}
+              token={token}
+              username={username}
+              navigate={navigate}
+              categoryName={selectedCategory}
             />}
           />
+          <Route
+            path="/vegetables"
+            element={<Questions
+              isLoggedIn={isLoggedIn}
+              token={token}
+              username={username}
+              navigate={navigate}
+              categoryName={selectedCategory}
+            />}
+          />
+      
           <Route
             path="/question/:questionId"
-            element={<SingleQuestionView 
-              isLoggedIn={isLoggedIn} 
-              token={token} 
-              username={username} 
-              Answers={Answers}  
-              navigate={navigate}     
-              />}
-            />
+            element={<SingleQuestionView
+              isLoggedIn={isLoggedIn}
+              token={token}
+              username={username}
+              Answers={Answers}
+              navigate={navigate}
+            />}
+          />
           {/* <Route
             path="/question/edit/:questionId"
             element={<EditQuestion 
@@ -161,7 +154,7 @@ const App = () =>
               navigate={navigate}     
               />}
             /> */}
-          <Route 
+          <Route
             path="/myprofile"
             element={<ProfilePage
               isLoggedIn={isLoggedIn}
@@ -170,13 +163,13 @@ const App = () =>
               username={username}
               userIsMe={myProfileQuestions}
               Answers={Answers}
-              />}
-              />
-          </Routes>
+            />}
+          />
+        </Routes>
 
       </div>
-      
-      
+
+
     </>
   );
 }

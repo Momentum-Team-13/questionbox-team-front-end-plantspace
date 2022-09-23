@@ -1,10 +1,11 @@
-import { useState} from "react"
+import { useState, useEffect} from "react"
+import axios from 'axios';
 import useLocalStorageState from 'use-local-storage-state'
 
 export default function NavBar(props) {
-const {navigate, handleLogout, isLoggedIn, setSelectedCategory,} = props
-const [setQuery] = useState("")
+const {navigate, handleLogout, isLoggedIn, setSelectedCategory, setQuery} = props
 const [category, setCategory] = useLocalStorageState("category", "Home")
+
 
     return (
     <>
@@ -16,14 +17,15 @@ const [category, setCategory] = useLocalStorageState("category", "Home")
             
         <nav>
             <div className="categories">
-                <button className="category-buttons" onClick ={() => {setSelectedCategory(""); navigate('/'); setCategory("Home")}}>All Questions</button>
+                <button className="category-buttons" onClick ={() => {setSelectedCategory(""); navigate('/'); setCategory("Home"); setQuery('')}}>All Questions</button>
                 <button className="category-buttons" onClick = {() => {setSelectedCategory("House Plants"); navigate("/houseplants"); setCategory("House Plants")}}>Houseplants</button>
                 <button className="category-buttons" onClick = {() => {setSelectedCategory("Outdoor Plants"); navigate("/outdoorplants"); setCategory("Outdoor Plants")}}>Outdoor Plants</button>
                 <button className="category-buttons" onClick = {() => {setSelectedCategory("Vegetables"); navigate("/vegetables"); setCategory("Vegetables")}}>Vegetables</button>
             </div>
 
             <div className="header-buttons">
-                <input className= "search-bar" placeholder="Search all posts" onChange={event => setQuery(event.target.value)}/>
+                <input className= "search-bar" placeholder="Search all posts" onChange={(e) => setQuery(e.target.value.toLowerCase())}/>
+
                 {isLoggedIn ? (
                     <>
                     <button className="user-buttons" onClick ={() => handleLogout()}>Logout</button>

@@ -5,13 +5,13 @@ import React, { useEffect, useState } from 'react';
 
 export default function EditQuestion() {
     const [question, setQuestion] = useState(null)
-    const [editedQuesetion, setEditedQuestion] = useState(null)
+    const [editedQuestion, setEditedQuestion] = useState(null)
     console.log("worked!")
     const params = useParams()
     // console.log(params.questionId)
 
     function handleEditSubmit() {
-        console.log(editedQuesetion)
+        console.log(editedQuestion)
         // waiting for endpoint from backend to post edited Q
     }
 

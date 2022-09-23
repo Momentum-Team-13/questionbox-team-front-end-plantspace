@@ -3,14 +3,14 @@ body {
 }
 
 h1 {
-  font-size: 100px;
+  font-size: 80px;
   font-family: 'Oswald', sans-serif;
   line-height: .4;
   color: white;
 }
 
 h2 {
-  font-size: 45px;
+  font-size: 30px;
   font-family: 'Oswald', sans-serif;  
   text-align: center;
 }
@@ -63,7 +63,7 @@ p {
   height: 25px;
   font-size: 20px;
   align-items: center;
-  width: 600px;
+  width: 40vw;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   border: solid rgb(224, 224, 224) 2px;
 }
@@ -75,8 +75,8 @@ p {
   background-color: rgba(255, 255, 255, 0.46);
   color: rgb(52, 52, 52);
   border: white 2px;
-  width: 300px;
-  height: 50px;
+  width: 250px;
+  height: 40px;
   border-radius: 10px;
   font-family: 'Oswald', sans-serif;
   box-shadow: rgba(7, 39, 7, 0.552) 0px 7px 29px 0px;
