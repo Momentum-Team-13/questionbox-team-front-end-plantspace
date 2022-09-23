@@ -3,8 +3,7 @@ import axios from 'axios';
 import useLocalStorageState from 'use-local-storage-state'
 
 export default function NavBar(props) {
-const {navigate, handleLogout, isLoggedIn, setSelectedCategory, query, setQuery} = props
-const [searchResults, setSearchResults] = useState('')
+const {navigate, handleLogout, isLoggedIn, setSelectedCategory, setQuery} = props
 const [category, setCategory] = useLocalStorageState("category", "Home")
 
 
@@ -26,7 +25,6 @@ const [category, setCategory] = useLocalStorageState("category", "Home")
 
             <div className="header-buttons">
                 <input className= "search-bar" placeholder="Search all posts" onChange={(e) => setQuery(e.target.value.toLowerCase())}/>
-                {/* <button className="user-buttons" onClick ={() => { navigate("/searchresults")}}>Search</button> */}
 
                 {isLoggedIn ? (
                     <>

@@ -20,24 +20,8 @@ function App() {
   const [username, setUsername] = useLocalStorageState('plantUsername', '')
   const [selectedCategory, setSelectedCategory] = useState(null)
   const [myProfileQuestions, setMyProfileQuestions] = useState(null)
-  const [searchResults, setSearchResults] = useState('')
   const [query, setQuery] = useState(null)
-  const [questionList, setQuestionList] = useState(null)
 
-  // const App = () =>
-  //   useRoutes([
-  //     { path: "/", element: <NavBar />},
-  //     { path: "/houseplants", element: <Questions />},
-  //     { path: "/outdoorplants", element: <Questions />},
-  //     { path: "/vegetables", element: <Questions />},
-
-  //   ])
-
-  //   const AppWrapper = () => (
-  //     <Router>
-  //       <App />
-  //     </Router>
-  //   );
 
   const setAuth = (username, token) => {
     setToken(token)
@@ -80,7 +64,6 @@ function App() {
           navigate={navigate}
           query={query}
           setQuery={setQuery} 
-          setQuestionList={setQuestionList}
           />
 
         <div>
@@ -117,8 +100,6 @@ function App() {
               username={username}
               navigate={navigate}
               categoryName={selectedCategory}
-              searchResults={searchResults}
-              setSearchResults={setSearchResults}
               query={query}
             />}
           />
@@ -152,17 +133,7 @@ function App() {
               categoryName={selectedCategory}
             />}
           />
-          {/* <Route
-            path="/searchresults"
-            element={<Questions
-              isLoggedIn={isLoggedIn}
-              token={token}
-              username={username}
-              navigate={navigate}
-              searchResults={searchResults}
-              query={query}
-            />}
-          /> */}
+      
           <Route
             path="/question/:questionId"
             element={<SingleQuestionView
