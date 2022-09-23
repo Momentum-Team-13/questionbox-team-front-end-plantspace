@@ -152,7 +152,7 @@ function App() {
               categoryName={selectedCategory}
             />}
           />
-          <Route
+          {/* <Route
             path="/searchresults"
             element={<Questions
               isLoggedIn={isLoggedIn}
@@ -162,7 +162,7 @@ function App() {
               searchResults={searchResults}
               query={query}
             />}
-          />
+          /> */}
           <Route
             path="/question/:questionId"
             element={<SingleQuestionView
